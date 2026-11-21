@@ -52,5 +52,361 @@
       ]
     ],
     "cost_per_1000_usd": 0.0
+  },
+  "Setup A - haiku": {
+    "diagnoses": 150,
+    "right_overall_pct": 73.3,
+    "right_verdict_pct": 75.3,
+    "confidently_wrong": 10,
+    "confidently_wrong_pct": 6.7,
+    "ambiguous_right_pct": 47.6,
+    "ambiguous_follow_up_pct": 83.3,
+    "stable_scenarios": "40/50",
+    "unparsed": 0,
+    "misses": [
+      [
+        "H03",
+        "bufferbloat/medium"
+      ],
+      [
+        "I03",
+        "local_or_isp/medium"
+      ],
+      [
+        "A01",
+        "bufferbloat/medium"
+      ],
+      [
+        "A02",
+        "bufferbloat/medium"
+      ],
+      [
+        "A04",
+        "bufferbloat/medium"
+      ],
+      [
+        "A06",
+        "bufferbloat/high"
+      ],
+      [
+        "A07",
+        "bufferbloat/medium"
+      ],
+      [
+        "A08",
+        "bufferbloat/high"
+      ],
+      [
+        "M02",
+        "bufferbloat/medium"
+      ],
+      [
+        "O01",
+        "bufferbloat/medium"
+      ],
+      [
+        "O04",
+        "bufferbloat/high"
+      ],
+      [
+        "U04",
+        "healthy/medium"
+      ],
+      [
+        "P01",
+        "bufferbloat/medium"
+      ],
+      [
+        "H03",
+        "bufferbloat/high"
+      ],
+      [
+        "I03",
+        "local_or_isp/medium"
+      ],
+      [
+        "A01",
+        "bufferbloat/medium"
+      ],
+      [
+        "A02",
+        "bufferbloat/medium"
+      ],
+      [
+        "A04",
+        "bufferbloat/medium"
+      ],
+      [
+        "A06",
+        "bufferbloat/medium"
+      ],
+      [
+        "A07",
+        "bufferbloat/medium"
+      ],
+      [
+        "A08",
+        "bufferbloat/high"
+      ],
+      [
+        "M02",
+        "bufferbloat/medium"
+      ],
+      [
+        "O01",
+        "healthy/high"
+      ],
+      [
+        "O04",
+        "bufferbloat/medium"
+      ],
+      [
+        "U04",
+        "healthy/medium"
+      ],
+      [
+        "P01",
+        "bufferbloat/medium"
+      ],
+      [
+        "H03",
+        "bufferbloat/medium"
+      ],
+      [
+        "I03",
+        "bufferbloat/medium"
+      ],
+      [
+        "A01",
+        "bufferbloat/medium"
+      ],
+      [
+        "A02",
+        "bufferbloat/medium"
+      ],
+      [
+        "A04",
+        "bufferbloat/medium"
+      ],
+      [
+        "A06",
+        "bufferbloat/high"
+      ],
+      [
+        "A07",
+        "bufferbloat/medium"
+      ],
+      [
+        "A08",
+        "bufferbloat/high"
+      ],
+      [
+        "A10",
+        "bufferbloat/medium"
+      ],
+      [
+        "M02",
+        "bufferbloat/medium"
+      ],
+      [
+        "O01",
+        "healthy/high"
+      ],
+      [
+        "O04",
+        "bufferbloat/high"
+      ],
+      [
+        "U04",
+        "healthy/medium"
+      ],
+      [
+        "P01",
+        "bufferbloat/medium"
+      ]
+    ],
+    "cost_per_1000_usd": 0.5,
+    "total_cost_usd": 0.0744
+  },
+  "Setup A - sonnet": {
+    "diagnoses": 150,
+    "right_overall_pct": 90.7,
+    "right_verdict_pct": 90.7,
+    "confidently_wrong": 3,
+    "confidently_wrong_pct": 2.0,
+    "ambiguous_right_pct": 90.5,
+    "ambiguous_follow_up_pct": 100.0,
+    "stable_scenarios": "46/50",
+    "unparsed": 0,
+    "misses": [
+      [
+        "I03",
+        "local_or_isp/medium"
+      ],
+      [
+        "A08",
+        "healthy/low"
+      ],
+      [
+        "O01",
+        "healthy/high"
+      ],
+      [
+        "O04",
+        "bufferbloat/medium"
+      ],
+      [
+        "U04",
+        "healthy/medium"
+      ],
+      [
+        "I03",
+        "local_or_isp/medium"
+      ],
+      [
+        "O01",
+        "healthy/high"
+      ],
+      [
+        "O04",
+        "bufferbloat/medium"
+      ],
+      [
+        "U04",
+        "healthy/medium"
+      ],
+      [
+        "I03",
+        "local_or_isp/medium"
+      ],
+      [
+        "C04",
+        "local_or_isp/medium"
+      ],
+      [
+        "O01",
+        "healthy/high"
+      ],
+      [
+        "O04",
+        "bufferbloat/medium"
+      ],
+      [
+        "U04",
+        "healthy/medium"
+      ]
+    ],
+    "cost_per_1000_usd": 6.68,
+    "total_cost_usd": 1.0018
+  },
+  "Setup B - haiku": {
+    "diagnoses": 50,
+    "right_overall_pct": 80.0,
+    "right_verdict_pct": 86.0,
+    "confidently_wrong": 7,
+    "confidently_wrong_pct": 14.0,
+    "ambiguous_right_pct": 57.1,
+    "ambiguous_follow_up_pct": 57.1,
+    "stable_scenarios": "50/50",
+    "unparsed": 0,
+    "misses": [
+      [
+        "A08",
+        "healthy/high"
+      ],
+      [
+        "A09",
+        "healthy/high"
+      ],
+      [
+        "A10",
+        "healthy/high"
+      ],
+      [
+        "M02",
+        "bufferbloat/high"
+      ],
+      [
+        "O01",
+        "dns/medium"
+      ],
+      [
+        "O04",
+        "bufferbloat/high"
+      ],
+      [
+        "O05",
+        "local_or_isp/medium"
+      ],
+      [
+        "U02",
+        "healthy/high"
+      ],
+      [
+        "U03",
+        "healthy/high"
+      ],
+      [
+        "U04",
+        "local_or_isp/medium"
+      ]
+    ],
+    "cost_per_1000_usd": 0.24,
+    "total_cost_usd": 0.0119
+  },
+  "Setup B - sonnet": {
+    "diagnoses": 50,
+    "right_overall_pct": 80.0,
+    "right_verdict_pct": 86.0,
+    "confidently_wrong": 7,
+    "confidently_wrong_pct": 14.0,
+    "ambiguous_right_pct": 57.1,
+    "ambiguous_follow_up_pct": 57.1,
+    "stable_scenarios": "50/50",
+    "unparsed": 0,
+    "misses": [
+      [
+        "A08",
+        "healthy/high"
+      ],
+      [
+        "A09",
+        "healthy/high"
+      ],
+      [
+        "A10",
+        "healthy/high"
+      ],
+      [
+        "M02",
+        "bufferbloat/high"
+      ],
+      [
+        "O01",
+        "dns/medium"
+      ],
+      [
+        "O04",
+        "bufferbloat/high"
+      ],
+      [
+        "O05",
+        "local_or_isp/medium"
+      ],
+      [
+        "U02",
+        "healthy/high"
+      ],
+      [
+        "U03",
+        "healthy/high"
+      ],
+      [
+        "U04",
+        "local_or_isp/medium"
+      ]
+    ],
+    "cost_per_1000_usd": 4.82,
+    "total_cost_usd": 0.2411
   }
 }
