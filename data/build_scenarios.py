@@ -1,4 +1,4 @@
-"""Builds data/scenarios.json: 45 synthetic "my internet is bad" cases plus 2 real ones, each with a locked answer.
+"""Builds data/scenarios.json: 48 synthetic "my internet is bad" cases plus 2 real ones, each with a locked answer.
 
 Every number is something a browser page can measure (the same things speed.cloudflare.com
 shows), plus one outside signal: whether Cloudflare Radar reports an outage for the user's
@@ -357,9 +357,29 @@ add("U05", "Sites are slow to start and video calls lag when the kids game.",
     "Two real problems at once: slow DNS and bufferbloat. Naming either one is right.")
 
 
+# ---------- other plan types (so the set isn't all cable) ----------
+add("P01", "We just switched to 5G home internet. The ping jumps around a lot. Is it OK?",
+    make({"download_mbps": 214, "upload_mbps": 24, "idle_latency_ms": 33, "jitter_ms": 9.2,
+          "loaded_latency_down_ms": 81, "loaded_latency_up_ms": 92, "packet_loss_pct": 0.2},
+         all_targets(19), {"isp": "T-Mobile Home Internet"}),
+    ["healthy"], ["high", "medium"], False,
+    "Normal for 5G home internet: some jitter and a modest rise under load, no real fault.")
+add("P02", "Calls drop whenever I send an email with an attachment.",
+    make({"download_mbps": 42, "upload_mbps": 4.5, "idle_latency_ms": 29, "jitter_ms": 3.5,
+          "loaded_latency_down_ms": 74, "loaded_latency_up_ms": 688},
+         all_targets(14), {"isp": "AT&T"}),
+    ["bufferbloat"], ["high", "medium"], False,
+    "A small DSL upload fills instantly and latency jumps to ~690 ms. Upload bufferbloat.")
+add("P03", "Fiber is super fast but some sites take a second to start.",
+    make({"download_mbps": 921, "upload_mbps": 874, "idle_latency_ms": 6, "jitter_ms": 0.9,
+          "loaded_latency_down_ms": 12, "loaded_latency_up_ms": 14, "dns_lookup_ms": 284,
+          "dns_failures": 1},
+         all_targets(-8), {"isp": "Verizon Fios"}),
+    ["dns"], ["high", "medium"], False,
+    "Everything is fiber-fast except name lookups (~280 ms, 1 of 5 failing). DNS.")
+
 def main():
-    from variants import make_variants
-    allsc = S + make_variants(S, 100 - len(S))
+    allsc = S
     out = Path(__file__).parent / "scenarios.json"
     out.write_text(json.dumps(allsc, indent=2) + "\n")
     amb = sum(s["truth"]["ambiguous"] for s in allsc)
