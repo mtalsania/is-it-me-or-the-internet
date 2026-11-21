@@ -1,13 +1,13 @@
 {
   "Rules only (no model)": {
-    "diagnoses": 31,
-    "right_overall_pct": 90.3,
-    "right_verdict_pct": 96.8,
-    "confidently_wrong": 3,
-    "confidently_wrong_pct": 9.7,
+    "diagnoses": 32,
+    "right_overall_pct": 87.5,
+    "right_verdict_pct": 93.8,
+    "confidently_wrong": 4,
+    "confidently_wrong_pct": 12.5,
     "ambiguous_right_pct": 70.0,
     "ambiguous_follow_up_pct": 70.0,
-    "stable_scenarios": "31/31",
+    "stable_scenarios": "32/32",
     "unparsed": 0,
     "misses": [
       [
@@ -21,6 +21,10 @@
       [
         "A10",
         "healthy/high"
+      ],
+      [
+        "M02",
+        "bufferbloat/high"
       ]
     ],
     "cost_per_1000_usd": 0.0

@@ -1545,5 +1545,62 @@
       "ambiguous": false,
       "why": "Real measurement: 10 ms idle, 741 ms while uploading. Severe upload bufferbloat; calls freeze whenever a backup or sync uploads."
     }
+  },
+  {
+    "id": "M02",
+    "complaint": "My Zoom calls freeze for a few seconds at random. My phone at the same desk seems fine.",
+    "measurements": {
+      "download_mbps": 84,
+      "upload_mbps": 64,
+      "idle_latency_ms": 10,
+      "jitter_ms": 3.8,
+      "loaded_latency_down_ms": 54,
+      "loaded_latency_up_ms": 741,
+      "packet_loss_pct": 0.0,
+      "dns_lookup_ms": 19,
+      "dns_failures": 0,
+      "targets": {
+        "cloudflare_edge": {
+          "ok": true,
+          "ms": 15
+        },
+        "google": {
+          "ok": true,
+          "ms": 21
+        },
+        "netflix": {
+          "ok": true,
+          "ms": 24
+        },
+        "zoom": {
+          "ok": true,
+          "ms": 43
+        }
+      },
+      "radar": {
+        "isp": "Verizon Fios",
+        "outage_reported": false
+      },
+      "retest": {
+        "where": "phone at the same desk, same Wi-Fi",
+        "download_mbps": 310,
+        "upload_mbps": 180,
+        "idle_latency_ms": 6,
+        "jitter_ms": null,
+        "packet_loss_pct": null,
+        "loaded_latency_ms": 26
+      }
+    },
+    "truth": {
+      "accept": [
+        "local_network"
+      ],
+      "confidence": [
+        "high",
+        "medium"
+      ],
+      "ambiguous": false,
+      "why": "Real measurement, with the phone retest (fast.com, 00:39 ET): same spot, same Wi-Fi, 310/180 Mbps and 26 ms loaded. The line and the router are fine; the laptop's Wi-Fi link is the bottleneck. A router fix (SQM) would be the wrong advice."
+    }
   }
 ]

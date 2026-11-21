@@ -1,4 +1,4 @@
-"""Builds data/scenarios.json: 30 synthetic "my internet is bad" cases plus 1 real one, each with a locked answer.
+"""Builds data/scenarios.json: 30 synthetic "my internet is bad" cases plus 2 real ones, each with a locked answer.
 
 Every number is something a browser page can measure (the same things speed.cloudflare.com
 shows), plus one outside signal: whether Cloudflare Radar reports an outage for the user's
@@ -261,6 +261,15 @@ add("M01", "My Zoom calls freeze for a few seconds at random.",
          radar={"isp": "Verizon Fios"}),
     ["bufferbloat"], ["high", "medium"], False,
     "Real measurement: 10 ms idle, 741 ms while uploading. Severe upload bufferbloat; calls freeze whenever a backup or sync uploads.")
+add("M02", "My Zoom calls freeze for a few seconds at random. My phone at the same desk seems fine.",
+    make({"download_mbps": 84, "upload_mbps": 64, "idle_latency_ms": 10, "jitter_ms": 3.8,
+          "loaded_latency_down_ms": 54, "loaded_latency_up_ms": 741},
+         radar={"isp": "Verizon Fios"},
+         retest={"where": "phone at the same desk, same Wi-Fi", "download_mbps": 310,
+                 "upload_mbps": 180, "idle_latency_ms": 6, "jitter_ms": None,
+                 "packet_loss_pct": None, "loaded_latency_ms": 26}),
+    ["local_network"], ["high", "medium"], False,
+    "Real measurement, with the phone retest (fast.com, 00:39 ET): same spot, same Wi-Fi, 310/180 Mbps and 26 ms loaded. The line and the router are fine; the laptop's Wi-Fi link is the bottleneck. A router fix (SQM) would be the wrong advice.")
 
 def main():
     out = Path(__file__).parent / "scenarios.json"
