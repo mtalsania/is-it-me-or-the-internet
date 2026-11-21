@@ -20,6 +20,13 @@ from rules import diagnose  # noqa: E402
 RAW = ROOT / "results" / "raw"
 
 
+def _fix_ok(r, t):
+    """A case like 'sign in to the Wi-Fi' has no exact verdict; any verdict whose fix says so counts."""
+    words = t.get("fix_mentions")
+    text = ((r.get("fix") or "") + " " + (r.get("explanation") or "")).lower()
+    return bool(words) and any(w in text for w in words)
+
+
 def score(rows, truth):
     n = len(rows)
     amb_rows = [r for r in rows if truth[r["id"]]["ambiguous"]]
@@ -33,7 +40,7 @@ def score(rows, truth):
             parse_fail += 1
             misses.append((r["id"], "no answer"))
             continue
-        ok_v = v in t["accept"]
+        ok_v = v in t["accept"] or _fix_ok(r, t)
         right_v += ok_v
         ok_all = ok_v and c in t["confidence"]
         right_all += ok_all
@@ -69,7 +76,8 @@ def row_from(r, setup, which="output"):
         return {"id": r["id"], "verdict": r["rule"]["verdict"] if r["output"] else None,
                 "confidence": r["rule"]["confidence"], "follow_up_test": o.get("follow_up_test")}
     return {"id": r["id"], "verdict": o.get("verdict"), "confidence": o.get("confidence"),
-            "follow_up_test": o.get("follow_up_test")}
+            "follow_up_test": o.get("follow_up_test"), "fix": o.get("fix"),
+            "explanation": o.get("explanation")}
 
 
 def factcheck_stats(rows_c, truth):

@@ -330,6 +330,7 @@ add("O05", "Hotel Wi-Fi says connected but nothing loads.",
          radar={"isp": "Hotel guest network", "outage_reported": False}),
     ["local_network"], ["high", "medium"], False,
     "Every site answers with a redirect (302). That's a login page (captive portal) on the local network, not an outage.")
+S[-1]["truth"]["fix_mentions"] = ["sign in", "sign-in", "log in", "login", "log-in", "captive", "portal", "accept the terms"]
 
 # ---------- unusual ----------
 add("U01", "Only Google is slow. YouTube and Gmail crawl, other sites are fine.",

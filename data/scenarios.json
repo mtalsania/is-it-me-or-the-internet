@@ -2096,7 +2096,17 @@
         "medium"
       ],
       "ambiguous": false,
-      "why": "Every site answers with a redirect (302). That's a login page (captive portal) on the local network, not an outage."
+      "why": "Every site answers with a redirect (302). That's a login page (captive portal) on the local network, not an outage.",
+      "fix_mentions": [
+        "sign in",
+        "sign-in",
+        "log in",
+        "login",
+        "log-in",
+        "captive",
+        "portal",
+        "accept the terms"
+      ]
     }
   },
   {

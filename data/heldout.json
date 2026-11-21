@@ -348,7 +348,17 @@
         "medium"
       ],
       "ambiguous": false,
-      "why": "Every site redirects (302): a sign-in page on the local network."
+      "why": "Every site redirects (302): the user hasn't signed in to the coffee shop's Wi-Fi yet. No verdict says exactly 'sign in', so any verdict whose fix tells them to sign in also counts (changed after Mihir's review, before any run).",
+      "fix_mentions": [
+        "sign in",
+        "sign-in",
+        "log in",
+        "login",
+        "log-in",
+        "captive",
+        "portal",
+        "accept the terms"
+      ]
     }
   },
   {

@@ -14,14 +14,16 @@ from build_scenarios import BASE, all_targets, make, wifi_bad
 H = []
 
 
-def add(sid, complaint, user_provider, m, accept, confidence, ambiguous, why):
+def add(sid, complaint, user_provider, m, accept, confidence, ambiguous, why, fix_mentions=None):
+    truth = {"accept": accept, "confidence": confidence, "ambiguous": ambiguous, "why": why}
+    if fix_mentions:
+        truth["fix_mentions"] = fix_mentions
     H.append({"id": sid, "complaint": complaint, "user_provider": user_provider,
-              "measurements": m,
-              "truth": {"accept": accept, "confidence": confidence,
-                        "ambiguous": ambiguous, "why": why}})
+              "measurements": m, "truth": truth})
 
 
 AMB = ["medium", "low"]
+SIGN_IN = ["sign in", "sign-in", "log in", "login", "log-in", "captive", "portal", "accept the terms"]
 OK = ["high", "medium"]
 
 add("K01", "My game lagged badly last night.", "Comcast",
@@ -63,7 +65,10 @@ add("K07", "Coffee shop Wi-Fi says connected but pages won't open.", "Coffee sho
          {k: {"ok": False, "ms": None, "http_status": 302} for k in BASE["targets"]},
          radar={"isp": "Coffee shop Wi-Fi", "outage_reported": False}),
     ["local_network"], OK, False,
-    "Every site redirects (302): a sign-in page on the local network.")
+    "Every site redirects (302): the user hasn't signed in to the coffee shop's Wi-Fi yet. "
+    "No verdict says exactly 'sign in', so any verdict whose fix tells them to sign in also counts "
+    "(changed after Mihir's review, before any run).",
+    fix_mentions=SIGN_IN)
 add("K08", "Slow in the kitchen.", "Comcast",
     make(wifi_bad(dl=24, ul=6, idle=44, jit=29, loss=2.0), all_targets(30),
          retest={"where": "laptop wired to the router", "download_mbps": 302, "upload_mbps": 22,
