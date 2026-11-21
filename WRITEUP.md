@@ -23,7 +23,7 @@ Order of work, visible in the git history: answers committed first, then rules, 
 
 ## The data and its problems
 
-- **38 synthetic cases from one author, plus 12 added later.** Only the first 30 had answers locked before the rules existed. The other 20 were written knowing where the rules were weak, which is a source of bias against the rules. See the check below.
+- **48 synthetic cases, all written by one author.** Only the first 30 had answers locked before the rules existed. The other 18 synthetic cases and the 2 real ones were added after the rules were frozen, by someone who knew where the rules were weak. That is a source of bias against the rules, so it gets its own check below.
 - **2 real cases** from Mihir's own connection (M01, M02). A laptop stuck on 2.4 GHz Wi-Fi showed 741 ms of latency under load while a phone at the same desk showed 26 ms.
 - **14 of 50 cases are deliberately ambiguous.** Browser data can't separate the causes, so the right answer is medium or low confidence plus a follow-up test. A "high confidence" answer there counts as confidently wrong.
 - **The "bad Wi-Fi" template has a built-in latency rise under load of 70 to 85 ms.** That is in mild bufferbloat territory, and it probably explains part of Haiku's habit of answering "bufferbloat".
