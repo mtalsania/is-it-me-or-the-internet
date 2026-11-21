@@ -1,4 +1,4 @@
-"""Builds data/scenarios.json: 30 synthetic "my internet is bad" cases plus 2 real ones, each with a locked answer.
+"""Builds data/scenarios.json: 45 synthetic "my internet is bad" cases plus 2 real ones, each with a locked answer.
 
 Every number is something a browser page can measure (the same things speed.cloudflare.com
 shows), plus one outside signal: whether Cloudflare Radar reports an outage for the user's
@@ -270,6 +270,92 @@ add("M02", "My Zoom calls freeze for a few seconds at random. My phone at the sa
                  "packet_loss_pct": None, "loaded_latency_ms": 26}),
     ["local_network"], ["high", "medium"], False,
     "Real measurement, with the phone retest (fast.com, 00:39 ET): same spot, same Wi-Fi, 310/180 Mbps and 26 ms loaded. The line and the router are fine; the laptop's Wi-Fi link is the bottleneck. A router fix (SQM) would be the wrong advice.")
+
+# =====================================================================================
+# Batch 2 (2026-11-21, requested after Mihir's review): 5 common, 5 outliers, 5 unusual.
+# Truth written before running these through the frozen rules.
+# =====================================================================================
+
+# ---------- common ----------
+add("C01", "Netflix 4K stutters when someone else is downloading a game.",
+    make({"idle_latency_ms": 18, "loaded_latency_down_ms": 131, "loaded_latency_up_ms": 52}),
+    ["bufferbloat"], ["high", "medium"], False,
+    "Latency rises ~110 ms under download. Moderate bufferbloat, the most common home complaint.")
+add("C02", "Every new website takes a beat before it starts loading.",
+    make({"dns_lookup_ms": 365}),
+    ["dns"], ["high", "medium"], False,
+    "A slow provider DNS resolver (~365 ms), nothing else wrong.")
+add("C03", "The basement office is slow, upstairs is fine.",
+    make(wifi_bad(dl=29, ul=7, idle=41, jit=26, loss=1.4), all_targets(26),
+         retest={"where": "same laptop upstairs near the router", "download_mbps": 301,
+                 "upload_mbps": 21, "idle_latency_ms": 14, "jitter_ms": 2.2, "packet_loss_pct": 0.0}),
+    ["local_network"], ["high", "medium"], False,
+    "Same laptop, good near the router and bad in the basement. Wi-Fi coverage.")
+add("C04", "Internet has been bad all evening.",
+    make({"download_mbps": 61, "upload_mbps": 9, "idle_latency_ms": 44, "jitter_ms": 24,
+          "loaded_latency_down_ms": 120, "loaded_latency_up_ms": 131, "packet_loss_pct": 1.5},
+         all_targets(30), radar={"outage_reported": True}),
+    ["isp_problem"], ["high", "medium"], False,
+    "Degraded everywhere and Radar reports a provider outage right now.")
+add("C05", "My video calls freeze whenever my photo backup is running.",
+    make({"upload_mbps": 19, "loaded_latency_up_ms": 436}),
+    ["bufferbloat"], ["high", "medium"], False,
+    "Upload saturation pushes latency to ~440 ms. Upload bufferbloat.")
+
+# ---------- outliers ----------
+add("O01", "We have satellite internet in the countryside. Video calls always lag.",
+    make({"download_mbps": 42, "upload_mbps": 3.1, "idle_latency_ms": 612, "jitter_ms": 31,
+          "loaded_latency_down_ms": 790, "loaded_latency_up_ms": 845, "packet_loss_pct": 0.6,
+          "dns_lookup_ms": 640},
+         all_targets(600), {"isp": "HughesNet"}),
+    ["isp_problem"], ["high", "medium"], False,
+    "600+ ms idle is the physics of a geostationary satellite, not Wi-Fi. The connection type is the cause; nothing at home fixes it.")
+add("O02", "Wi-Fi says connected but no new website will open.",
+    make({"dns_lookup_ms": None, "dns_failures": 5}),
+    ["dns"], ["high", "medium"], False,
+    "All 5 fresh names fail while already-known sites (cached) still answer fast. The DNS resolver is dead.")
+add("O03", "My online game keeps rubber-banding, but speed tests look great.",
+    make({"packet_loss_pct": 3.2}),
+    ["local_or_isp", "local_network", "isp_problem"], ["medium", "low"], True,
+    "Loss with perfect speed and latency. Wi-Fi interference or a noisy line; one test can't tell.")
+add("O04", "I can't upload anything. Photos and files just hang.",
+    make({"upload_mbps": 0.8, "loaded_latency_up_ms": 912}),
+    ["isp_problem", "local_or_isp", "local_network"], ["medium", "low"], True,
+    "Upload collapsed to 0.8 Mbps while download is full speed. Typical of a cable upstream fault, but a bad Wi-Fi link can also look one-sided. Bufferbloat is a symptom here, not the cause.")
+add("O05", "Hotel Wi-Fi says connected but nothing loads.",
+    make({"download_mbps": 0.0, "upload_mbps": 0.0, "idle_latency_ms": None, "jitter_ms": None,
+          "loaded_latency_down_ms": None, "loaded_latency_up_ms": None, "packet_loss_pct": None,
+          "dns_lookup_ms": 22, "dns_failures": 0},
+         {k: {"ok": False, "ms": None, "http_status": 302} for k in BASE["targets"]},
+         radar={"isp": "Hotel guest network", "outage_reported": False}),
+    ["local_network"], ["high", "medium"], False,
+    "Every site answers with a redirect (302). That's a login page (captive portal) on the local network, not an outage.")
+
+# ---------- unusual ----------
+add("U01", "Only Google is slow. YouTube and Gmail crawl, other sites are fine.",
+    make(targets={"google": {"ms": 291}}),
+    ["service_route"], ["high", "medium"], False,
+    "Google 291 ms vs edge 15 ms with everything else normal. Path to Google.")
+add("U02", "Netflix and Zoom both stopped working at the same time.",
+    make(targets={"netflix": {"ok": False, "ms": None, "error": "connection timed out"},
+                  "zoom": {"ok": False, "ms": None, "error": "connection timed out"}}),
+    ["service_route", "service_down", "isp_problem"], ["medium", "low"], True,
+    "Two unrelated services fail while Cloudflare and Google answer. More likely a provider routing problem than two outages, but this data can't prove it.")
+add("U03", "Our smart TV keeps buffering.",
+    make(),
+    ["healthy", "local_network", "local_or_isp"], ["medium", "low"], True,
+    "The test ran on a phone and the line is healthy. The TV itself (its Wi-Fi or app) wasn't measured, so 'you're fine' with high confidence is wrong.")
+add("U04", "My home Verizon internet is slow.",
+    make({"download_mbps": 247, "upload_mbps": 35, "idle_latency_ms": 17, "jitter_ms": 22,
+          "loaded_latency_down_ms": 25, "loaded_latency_up_ms": None, "packet_loss_pct": 0.0},
+         all_targets(4), {"isp": "T-Mobile USA"}),
+    ["local_network"], ["high", "medium"], False,
+    "The user says Verizon, but the test ran over T-Mobile: the phone was on cellular, not home Wi-Fi. This test didn't measure the home connection at all. (Based on Mihir's real phone test.)")
+add("U05", "Sites are slow to start and video calls lag when the kids game.",
+    make({"dns_lookup_ms": 520, "loaded_latency_down_ms": 402}),
+    ["dns", "bufferbloat"], ["high", "medium"], False,
+    "Two real problems at once: slow DNS and bufferbloat. Naming either one is right.")
+
 
 def main():
     out = Path(__file__).parent / "scenarios.json"
