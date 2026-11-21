@@ -1497,5 +1497,53 @@
       "ambiguous": true,
       "why": "Everyone froze, so it was likely Zoom, but it's over and this data can't confirm it. Any of these with honest hedging is fine."
     }
+  },
+  {
+    "id": "M01",
+    "complaint": "My Zoom calls freeze for a few seconds at random.",
+    "measurements": {
+      "download_mbps": 84,
+      "upload_mbps": 64,
+      "idle_latency_ms": 10,
+      "jitter_ms": 3.8,
+      "loaded_latency_down_ms": 54,
+      "loaded_latency_up_ms": 741,
+      "packet_loss_pct": 0.0,
+      "dns_lookup_ms": 19,
+      "dns_failures": 0,
+      "targets": {
+        "cloudflare_edge": {
+          "ok": true,
+          "ms": 15
+        },
+        "google": {
+          "ok": true,
+          "ms": 21
+        },
+        "netflix": {
+          "ok": true,
+          "ms": 24
+        },
+        "zoom": {
+          "ok": true,
+          "ms": 43
+        }
+      },
+      "radar": {
+        "isp": "Verizon Fios",
+        "outage_reported": false
+      }
+    },
+    "truth": {
+      "accept": [
+        "bufferbloat"
+      ],
+      "confidence": [
+        "high",
+        "medium"
+      ],
+      "ambiguous": false,
+      "why": "Real measurement: 10 ms idle, 741 ms while uploading. Severe upload bufferbloat; calls freeze whenever a backup or sync uploads."
+    }
   }
 ]

@@ -1,13 +1,13 @@
 {
   "Rules only (no model)": {
-    "diagnoses": 30,
-    "right_overall_pct": 90.0,
-    "right_verdict_pct": 96.7,
+    "diagnoses": 31,
+    "right_overall_pct": 90.3,
+    "right_verdict_pct": 96.8,
     "confidently_wrong": 3,
-    "confidently_wrong_pct": 10.0,
+    "confidently_wrong_pct": 9.7,
     "ambiguous_right_pct": 70.0,
     "ambiguous_follow_up_pct": 70.0,
-    "stable_scenarios": "30/30",
+    "stable_scenarios": "31/31",
     "unparsed": 0,
     "misses": [
       [

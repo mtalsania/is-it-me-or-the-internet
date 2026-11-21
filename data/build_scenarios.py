@@ -1,4 +1,4 @@
-"""Builds data/scenarios.json: 30 synthetic "my internet is bad" cases with a locked answer.
+"""Builds data/scenarios.json: 30 synthetic "my internet is bad" cases plus 1 real one, each with a locked answer.
 
 Every number is something a browser page can measure (the same things speed.cloudflare.com
 shows), plus one outside signal: whether Cloudflare Radar reports an outage for the user's
@@ -249,6 +249,18 @@ add("A10", "Zoom froze for everyone in my meeting earlier.",
     ["healthy", "service_down", "service_route"], amb_conf, True,
     "Everyone froze, so it was likely Zoom, but it's over and this data can't confirm it. Any of these with honest hedging is fine.")
 
+
+# ---------- real case (Mihir's home connection, 2026-11-21) ----------
+# Laptop on Verizon Wi-Fi. fast.com: 84/64 Mbps, 10 ms unloaded, 741 ms loaded.
+# Waveform on the same laptop: 13 ms idle, jitter 3.8, +44 ms while downloading, and its
+# upload-latency step never finished. So the 741 ms is assigned to the upload side.
+# Two tools were combined; target and DNS timings were not measured and use healthy values.
+add("M01", "My Zoom calls freeze for a few seconds at random.",
+    make({"download_mbps": 84, "upload_mbps": 64, "idle_latency_ms": 10, "jitter_ms": 3.8,
+          "loaded_latency_down_ms": 54, "loaded_latency_up_ms": 741},
+         radar={"isp": "Verizon Fios"}),
+    ["bufferbloat"], ["high", "medium"], False,
+    "Real measurement: 10 ms idle, 741 ms while uploading. Severe upload bufferbloat; calls freeze whenever a backup or sync uploads.")
 
 def main():
     out = Path(__file__).parent / "scenarios.json"
