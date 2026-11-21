@@ -19,7 +19,7 @@ pip install -r requirements.txt
 python data/build_scenarios.py          # regenerate data/scenarios.json
 python -m pytest -q                     # rule tests, no API calls
 python src/run_eval.py --dry-run        # show prompts and rule verdicts, no API calls
-export ANTHROPIC_API_KEY=...            # never commit this
+# put ANTHROPIC_API_KEY=... in a .env file here (git-ignored); run_eval.py reads it
 python src/run_eval.py --setup both --model sonnet --runs 3
 python src/run_eval.py --setup both --model haiku --runs 3
 python src/grade.py                     # writes results/summary.md

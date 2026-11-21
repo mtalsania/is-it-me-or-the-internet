@@ -26,6 +26,17 @@ EFFORT = {"A": "high", "B": "low"}
 RAW = ROOT / "results" / "raw"
 
 
+def load_dotenv():
+    """Read ANTHROPIC_API_KEY from a git-ignored .env in the repo root, if present.
+    Kept out of the shell profile so Claude Code itself doesn't pick up the key."""
+    import os
+    f = ROOT / ".env"
+    if f.exists() and not os.environ.get("ANTHROPIC_API_KEY"):
+        for line in f.read_text().splitlines():
+            if line.startswith("ANTHROPIC_API_KEY="):
+                os.environ["ANTHROPIC_API_KEY"] = line.split("=", 1)[1].strip().strip('"')
+
+
 def load_scenarios():
     return json.loads((ROOT / "data" / "scenarios.json").read_text())
 
@@ -93,6 +104,7 @@ def main():
         print(f"\nWould make {n} calls to {model_id}.")
         return
 
+    load_dotenv()
     import anthropic
     client = anthropic.Anthropic(max_retries=4)
     RAW.mkdir(parents=True, exist_ok=True)
