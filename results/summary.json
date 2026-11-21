@@ -1,0 +1,28 @@
+{
+  "Rules only (no model)": {
+    "diagnoses": 30,
+    "right_overall_pct": 90.0,
+    "right_verdict_pct": 96.7,
+    "confidently_wrong": 3,
+    "confidently_wrong_pct": 10.0,
+    "ambiguous_right_pct": 70.0,
+    "ambiguous_follow_up_pct": 70.0,
+    "stable_scenarios": "30/30",
+    "unparsed": 0,
+    "misses": [
+      [
+        "A08",
+        "healthy/high"
+      ],
+      [
+        "A09",
+        "healthy/high"
+      ],
+      [
+        "A10",
+        "healthy/high"
+      ]
+    ],
+    "cost_per_1000_usd": 0.0
+  }
+}
