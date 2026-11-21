@@ -358,10 +358,12 @@ add("U05", "Sites are slow to start and video calls lag when the kids game.",
 
 
 def main():
+    from variants import make_variants
+    allsc = S + make_variants(S, 100 - len(S))
     out = Path(__file__).parent / "scenarios.json"
-    out.write_text(json.dumps(S, indent=2) + "\n")
-    amb = sum(s["truth"]["ambiguous"] for s in S)
-    print(f"wrote {len(S)} scenarios ({amb} ambiguous) to {out}")
+    out.write_text(json.dumps(allsc, indent=2) + "\n")
+    amb = sum(s["truth"]["ambiguous"] for s in allsc)
+    print(f"wrote {len(allsc)} scenarios ({amb} ambiguous) to {out}")
 
 
 if __name__ == "__main__":

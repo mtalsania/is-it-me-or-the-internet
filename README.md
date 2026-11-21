@@ -25,7 +25,7 @@ python src/run_eval.py --setup both --model haiku --runs 3
 python src/grade.py                     # writes results/summary.md
 ```
 
-The full run is 360 calls and should cost about $1 to $2.
+The full run is 800 calls (100 scenarios: Setup A x3 and Setup B x1, on Sonnet and Haiku) and should cost about $4 to $6.
 
 ## Order of work (check the git history)
 

@@ -1,13 +1,13 @@
 {
   "Rules only (no model)": {
-    "diagnoses": 47,
-    "right_overall_pct": 78.7,
-    "right_verdict_pct": 85.1,
-    "confidently_wrong": 7,
-    "confidently_wrong_pct": 14.9,
+    "diagnoses": 100,
+    "right_overall_pct": 84.0,
+    "right_verdict_pct": 90.0,
+    "confidently_wrong": 13,
+    "confidently_wrong_pct": 13.0,
     "ambiguous_right_pct": 57.1,
     "ambiguous_follow_up_pct": 57.1,
-    "stable_scenarios": "47/47",
+    "stable_scenarios": "100/100",
     "unparsed": 0,
     "misses": [
       [
@@ -49,6 +49,30 @@
       [
         "U04",
         "local_or_isp/medium"
+      ],
+      [
+        "V27-A08-5g_home",
+        "healthy/high"
+      ],
+      [
+        "V28-A09-gig_cable",
+        "healthy/high"
+      ],
+      [
+        "V29-A10-fiber",
+        "healthy/high"
+      ],
+      [
+        "V37-O04-fiber",
+        "bufferbloat/high"
+      ],
+      [
+        "V39-U02-5g_home",
+        "healthy/high"
+      ],
+      [
+        "V40-U03-gig_cable",
+        "healthy/high"
       ]
     ],
     "cost_per_1000_usd": 0.0

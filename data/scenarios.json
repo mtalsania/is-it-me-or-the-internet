@@ -2345,5 +2345,2688 @@
       "ambiguous": false,
       "why": "Two real problems at once: slow DNS and bufferbloat. Naming either one is right."
     }
+  },
+  {
+    "id": "V01-H01-fiber",
+    "complaint": "Netflix was buffering last night.",
+    "measurements": {
+      "download_mbps": 907,
+      "upload_mbps": 819,
+      "idle_latency_ms": 6.2,
+      "jitter_ms": 1.0,
+      "loaded_latency_down_ms": 26,
+      "loaded_latency_up_ms": 36,
+      "packet_loss_pct": 0.0,
+      "dns_lookup_ms": 17,
+      "dns_failures": 0,
+      "targets": {
+        "cloudflare_edge": {
+          "ok": true,
+          "ms": 6.9
+        },
+        "google": {
+          "ok": true,
+          "ms": 13
+        },
+        "netflix": {
+          "ok": true,
+          "ms": 15
+        },
+        "zoom": {
+          "ok": true,
+          "ms": 35
+        }
+      },
+      "radar": {
+        "isp": "Verizon Fios",
+        "outage_reported": false
+      }
+    },
+    "truth": {
+      "accept": [
+        "healthy"
+      ],
+      "confidence": [
+        "high",
+        "medium"
+      ],
+      "ambiguous": false,
+      "why": "Everything is normal right now. Last night isn't visible in this data, but nothing here is broken."
+    },
+    "variant_of": "H01"
+  },
+  {
+    "id": "V02-H02-dsl",
+    "complaint": "The speed test says 900 but it still feels slow.",
+    "measurements": {
+      "download_mbps": 837,
+      "upload_mbps": 871,
+      "idle_latency_ms": 30,
+      "jitter_ms": 3.1,
+      "loaded_latency_down_ms": 34,
+      "loaded_latency_up_ms": 36,
+      "packet_loss_pct": 0.0,
+      "dns_lookup_ms": 8.2,
+      "dns_failures": 0,
+      "targets": {
+        "cloudflare_edge": {
+          "ok": true,
+          "ms": 32
+        },
+        "google": {
+          "ok": true,
+          "ms": 37
+        },
+        "netflix": {
+          "ok": true,
+          "ms": 39
+        },
+        "zoom": {
+          "ok": true,
+          "ms": 62
+        }
+      },
+      "radar": {
+        "isp": "AT&T",
+        "outage_reported": false
+      }
+    },
+    "truth": {
+      "accept": [
+        "healthy"
+      ],
+      "confidence": [
+        "high",
+        "medium"
+      ],
+      "ambiguous": false,
+      "why": "Gigabit fiber with low latency. Nothing in the network is slow."
+    },
+    "variant_of": "H02"
+  },
+  {
+    "id": "V03-H03-5g_home",
+    "complaint": "Is my internet slow?",
+    "measurements": {
+      "download_mbps": 51,
+      "upload_mbps": 4.4,
+      "idle_latency_ms": 44,
+      "jitter_ms": 8.5,
+      "loaded_latency_down_ms": 72,
+      "loaded_latency_up_ms": 86,
+      "packet_loss_pct": 0.0,
+      "dns_lookup_ms": 24,
+      "dns_failures": 0,
+      "targets": {
+        "cloudflare_edge": {
+          "ok": true,
+          "ms": 42
+        },
+        "google": {
+          "ok": true,
+          "ms": 50
+        },
+        "netflix": {
+          "ok": true,
+          "ms": 53
+        },
+        "zoom": {
+          "ok": true,
+          "ms": 71
+        }
+      },
+      "radar": {
+        "isp": "T-Mobile Home Internet",
+        "outage_reported": false
+      }
+    },
+    "truth": {
+      "accept": [
+        "healthy"
+      ],
+      "confidence": [
+        "high",
+        "medium"
+      ],
+      "ambiguous": false,
+      "why": "A modest DSL-class plan working as designed: steady latency, no loss, no bloat."
+    },
+    "variant_of": "H03"
+  },
+  {
+    "id": "V04-H04-gig_cable",
+    "complaint": "I saw on X that Comcast is down. Is mine affected?",
+    "measurements": {
+      "download_mbps": 931,
+      "upload_mbps": 37,
+      "idle_latency_ms": 12,
+      "jitter_ms": 1.9,
+      "loaded_latency_down_ms": 35,
+      "loaded_latency_up_ms": 42,
+      "packet_loss_pct": 0.0,
+      "dns_lookup_ms": 20,
+      "dns_failures": 0,
+      "targets": {
+        "cloudflare_edge": {
+          "ok": true,
+          "ms": 13
+        },
+        "google": {
+          "ok": true,
+          "ms": 19
+        },
+        "netflix": {
+          "ok": true,
+          "ms": 22
+        },
+        "zoom": {
+          "ok": true,
+          "ms": 42
+        }
+      },
+      "radar": {
+        "isp": "Xfinity",
+        "outage_reported": true
+      }
+    },
+    "truth": {
+      "accept": [
+        "healthy"
+      ],
+      "confidence": [
+        "high",
+        "medium"
+      ],
+      "ambiguous": false,
+      "why": "Radar shows a Comcast outage somewhere, but this connection measures perfectly. Outages are regional."
+    },
+    "variant_of": "H04"
+  },
+  {
+    "id": "V05-B01-fiber",
+    "complaint": "Zoom freezes whenever my kid is gaming or downloading.",
+    "measurements": {
+      "download_mbps": 892,
+      "upload_mbps": 893,
+      "idle_latency_ms": 6.0,
+      "jitter_ms": 1.0,
+      "loaded_latency_down_ms": 513,
+      "loaded_latency_up_ms": 213,
+      "packet_loss_pct": 0.0,
+      "dns_lookup_ms": 18,
+      "dns_failures": 0,
+      "targets": {
+        "cloudflare_edge": {
+          "ok": true,
+          "ms": 7.4
+        },
+        "google": {
+          "ok": true,
+          "ms": 13
+        },
+        "netflix": {
+          "ok": true,
+          "ms": 16
+        },
+        "zoom": {
+          "ok": true,
+          "ms": 36
+        }
+      },
+      "radar": {
+        "isp": "Verizon Fios",
+        "outage_reported": false
+      }
+    },
+    "truth": {
+      "accept": [
+        "bufferbloat"
+      ],
+      "confidence": [
+        "high",
+        "medium"
+      ],
+      "ambiguous": false,
+      "why": "Idle latency 14 ms jumps to 486 ms under download. Classic bufferbloat in the router or modem."
+    },
+    "variant_of": "B01"
+  },
+  {
+    "id": "V06-B02-dsl",
+    "complaint": "Video calls break up when I upload files to Google Drive.",
+    "measurements": {
+      "download_mbps": 45,
+      "upload_mbps": 10.0,
+      "idle_latency_ms": 29,
+      "jitter_ms": 3.2,
+      "loaded_latency_down_ms": 69,
+      "loaded_latency_up_ms": 945,
+      "packet_loss_pct": 0.0,
+      "dns_lookup_ms": 19,
+      "dns_failures": 0,
+      "targets": {
+        "cloudflare_edge": {
+          "ok": true,
+          "ms": 29
+        },
+        "google": {
+          "ok": true,
+          "ms": 37
+        },
+        "netflix": {
+          "ok": true,
+          "ms": 39
+        },
+        "zoom": {
+          "ok": true,
+          "ms": 58
+        }
+      },
+      "radar": {
+        "isp": "AT&T",
+        "outage_reported": false
+      }
+    },
+    "truth": {
+      "accept": [
+        "bufferbloat"
+      ],
+      "confidence": [
+        "high",
+        "medium"
+      ],
+      "ambiguous": false,
+      "why": "Upload saturation pushes latency to ~900 ms. Upload-side bufferbloat, common on cable."
+    },
+    "variant_of": "B02"
+  },
+  {
+    "id": "V07-B03-5g_home",
+    "complaint": "Games lag only in the evening when everyone is home.",
+    "measurements": {
+      "download_mbps": 151,
+      "upload_mbps": 30,
+      "idle_latency_ms": 34,
+      "jitter_ms": 8.3,
+      "loaded_latency_down_ms": 369,
+      "loaded_latency_up_ms": 371,
+      "packet_loss_pct": 0.0,
+      "dns_lookup_ms": 19,
+      "dns_failures": 0,
+      "targets": {
+        "cloudflare_edge": {
+          "ok": true,
+          "ms": 30
+        },
+        "google": {
+          "ok": true,
+          "ms": 38
+        },
+        "netflix": {
+          "ok": true,
+          "ms": 40
+        },
+        "zoom": {
+          "ok": true,
+          "ms": 57
+        }
+      },
+      "radar": {
+        "isp": "T-Mobile Home Internet",
+        "outage_reported": false
+      }
+    },
+    "truth": {
+      "accept": [
+        "bufferbloat"
+      ],
+      "confidence": [
+        "high",
+        "medium"
+      ],
+      "ambiguous": false,
+      "why": "Healthy at idle, 300+ ms once the line is busy. Busy household plus bufferbloat."
+    },
+    "variant_of": "B03"
+  },
+  {
+    "id": "V08-D01-gig_cable",
+    "complaint": "Websites take forever to start loading, then load fast.",
+    "measurements": {
+      "download_mbps": 1054,
+      "upload_mbps": 37,
+      "idle_latency_ms": 13,
+      "jitter_ms": 1.8,
+      "loaded_latency_down_ms": 33,
+      "loaded_latency_up_ms": 41,
+      "packet_loss_pct": 0.0,
+      "dns_lookup_ms": 1977,
+      "dns_failures": 0,
+      "targets": {
+        "cloudflare_edge": {
+          "ok": true,
+          "ms": 14
+        },
+        "google": {
+          "ok": true,
+          "ms": 19
+        },
+        "netflix": {
+          "ok": true,
+          "ms": 22
+        },
+        "zoom": {
+          "ok": true,
+          "ms": 41
+        }
+      },
+      "radar": {
+        "isp": "Xfinity",
+        "outage_reported": false
+      }
+    },
+    "truth": {
+      "accept": [
+        "dns"
+      ],
+      "confidence": [
+        "high",
+        "medium"
+      ],
+      "ambiguous": false,
+      "why": "Lookups take ~1.8 s while speed and latency are perfect. The DNS resolver is the bottleneck."
+    },
+    "variant_of": "D01"
+  },
+  {
+    "id": "V09-D02-fiber",
+    "complaint": "Some sites just don't open. Others are fine.",
+    "measurements": {
+      "download_mbps": 861,
+      "upload_mbps": 871,
+      "idle_latency_ms": 6.1,
+      "jitter_ms": 1.1,
+      "loaded_latency_down_ms": 30,
+      "loaded_latency_up_ms": 38,
+      "packet_loss_pct": 0.0,
+      "dns_lookup_ms": 448,
+      "dns_failures": 2,
+      "targets": {
+        "cloudflare_edge": {
+          "ok": true,
+          "ms": 6.9
+        },
+        "google": {
+          "ok": true,
+          "ms": 13
+        },
+        "netflix": {
+          "ok": true,
+          "ms": 16
+        },
+        "zoom": {
+          "ok": true,
+          "ms": 36
+        }
+      },
+      "radar": {
+        "isp": "Verizon Fios",
+        "outage_reported": false
+      }
+    },
+    "truth": {
+      "accept": [
+        "dns"
+      ],
+      "confidence": [
+        "high",
+        "medium"
+      ],
+      "ambiguous": false,
+      "why": "2 of 5 fresh names fail to resolve; the line itself is clean. DNS problem."
+    },
+    "variant_of": "D02"
+  },
+  {
+    "id": "V10-D03-dsl",
+    "complaint": "Everything feels sluggish when I click a link.",
+    "measurements": {
+      "download_mbps": 82,
+      "upload_mbps": 10,
+      "idle_latency_ms": 26,
+      "jitter_ms": 3.1,
+      "loaded_latency_down_ms": 63,
+      "loaded_latency_up_ms": 74,
+      "packet_loss_pct": 0.0,
+      "dns_lookup_ms": 699,
+      "dns_failures": 0,
+      "targets": {
+        "cloudflare_edge": {
+          "ok": true,
+          "ms": 26
+        },
+        "google": {
+          "ok": true,
+          "ms": 31
+        },
+        "netflix": {
+          "ok": true,
+          "ms": 35
+        },
+        "zoom": {
+          "ok": true,
+          "ms": 54
+        }
+      },
+      "radar": {
+        "isp": "AT&T",
+        "outage_reported": false
+      }
+    },
+    "truth": {
+      "accept": [
+        "dns"
+      ],
+      "confidence": [
+        "high",
+        "medium"
+      ],
+      "ambiguous": false,
+      "why": "A slower but healthy plan with ~700 ms lookups. The click-to-load delay is DNS."
+    },
+    "variant_of": "D03"
+  },
+  {
+    "id": "V11-I01-5g_home",
+    "complaint": "Everything is slow and Zoom keeps dropping.",
+    "measurements": {
+      "download_mbps": 23,
+      "upload_mbps": 4.2,
+      "idle_latency_ms": 116,
+      "jitter_ms": 37,
+      "loaded_latency_down_ms": 188,
+      "loaded_latency_up_ms": 204,
+      "packet_loss_pct": 4.4,
+      "dns_lookup_ms": 19,
+      "dns_failures": 0,
+      "targets": {
+        "cloudflare_edge": {
+          "ok": true,
+          "ms": 124
+        },
+        "google": {
+          "ok": true,
+          "ms": 131
+        },
+        "netflix": {
+          "ok": true,
+          "ms": 133
+        },
+        "zoom": {
+          "ok": true,
+          "ms": 147
+        }
+      },
+      "radar": {
+        "isp": "T-Mobile Home Internet",
+        "outage_reported": true
+      }
+    },
+    "truth": {
+      "accept": [
+        "isp_problem"
+      ],
+      "confidence": [
+        "high",
+        "medium"
+      ],
+      "ambiguous": false,
+      "why": "Every target is slow and lossy, and Radar reports an outage for this provider right now."
+    },
+    "variant_of": "I01"
+  },
+  {
+    "id": "V12-I03-gig_cable",
+    "complaint": "Slow on Wi-Fi, so I plugged in a cable. Still slow.",
+    "measurements": {
+      "download_mbps": 31,
+      "upload_mbps": 6.2,
+      "idle_latency_ms": 79,
+      "jitter_ms": 27,
+      "loaded_latency_down_ms": 143,
+      "loaded_latency_up_ms": 159,
+      "packet_loss_pct": 2.9,
+      "dns_lookup_ms": 18,
+      "dns_failures": 0,
+      "targets": {
+        "cloudflare_edge": {
+          "ok": true,
+          "ms": 73
+        },
+        "google": {
+          "ok": true,
+          "ms": 78
+        },
+        "netflix": {
+          "ok": true,
+          "ms": 82
+        },
+        "zoom": {
+          "ok": true,
+          "ms": 100
+        }
+      },
+      "radar": {
+        "isp": "Xfinity",
+        "outage_reported": false
+      },
+      "retest": {
+        "where": "laptop wired to the router",
+        "download_mbps": 33,
+        "upload_mbps": 6.4,
+        "idle_latency_ms": 85,
+        "jitter_ms": 27,
+        "packet_loss_pct": 2.8
+      }
+    },
+    "truth": {
+      "accept": [
+        "isp_problem"
+      ],
+      "confidence": [
+        "high",
+        "medium"
+      ],
+      "ambiguous": false,
+      "why": "Bad on Wi-Fi and equally bad on a cable. Wi-Fi is ruled out. It's the line or the provider, with modem/router a distant second."
+    },
+    "variant_of": "I03"
+  },
+  {
+    "id": "V13-L01-fiber",
+    "complaint": "Upstairs bedroom is unusable for calls.",
+    "measurements": {
+      "download_mbps": 39,
+      "upload_mbps": 8.4,
+      "idle_latency_ms": 38,
+      "jitter_ms": 31,
+      "loaded_latency_down_ms": 106,
+      "loaded_latency_up_ms": 121,
+      "packet_loss_pct": 2.7,
+      "dns_lookup_ms": 17,
+      "dns_failures": 0,
+      "targets": {
+        "cloudflare_edge": {
+          "ok": true,
+          "ms": 42
+        },
+        "google": {
+          "ok": true,
+          "ms": 46
+        },
+        "netflix": {
+          "ok": true,
+          "ms": 49
+        },
+        "zoom": {
+          "ok": true,
+          "ms": 65
+        }
+      },
+      "radar": {
+        "isp": "Verizon Fios",
+        "outage_reported": false
+      },
+      "retest": {
+        "where": "laptop next to the router",
+        "download_mbps": 910,
+        "upload_mbps": 839,
+        "idle_latency_ms": 6.4,
+        "jitter_ms": 0.9,
+        "packet_loss_pct": 0.0
+      }
+    },
+    "truth": {
+      "accept": [
+        "local_network"
+      ],
+      "confidence": [
+        "high",
+        "medium"
+      ],
+      "ambiguous": false,
+      "why": "Bad upstairs, perfect next to the router, same device. Wi-Fi coverage."
+    },
+    "variant_of": "L01"
+  },
+  {
+    "id": "V14-L02-dsl",
+    "complaint": "My laptop is slow but my phone seems fine.",
+    "measurements": {
+      "download_mbps": 11,
+      "upload_mbps": 3.3,
+      "idle_latency_ms": 45,
+      "jitter_ms": 20,
+      "loaded_latency_down_ms": 110,
+      "loaded_latency_up_ms": 131,
+      "packet_loss_pct": 1.2,
+      "dns_lookup_ms": 18,
+      "dns_failures": 0,
+      "targets": {
+        "cloudflare_edge": {
+          "ok": true,
+          "ms": 52
+        },
+        "google": {
+          "ok": true,
+          "ms": 57
+        },
+        "netflix": {
+          "ok": true,
+          "ms": 59
+        },
+        "zoom": {
+          "ok": true,
+          "ms": 75
+        }
+      },
+      "radar": {
+        "isp": "AT&T",
+        "outage_reported": false
+      },
+      "retest": {
+        "where": "phone in the same room",
+        "download_mbps": 42,
+        "upload_mbps": 5.3,
+        "idle_latency_ms": 28,
+        "jitter_ms": 3.2,
+        "packet_loss_pct": 0.0
+      }
+    },
+    "truth": {
+      "accept": [
+        "local_network"
+      ],
+      "confidence": [
+        "high",
+        "medium"
+      ],
+      "ambiguous": false,
+      "why": "Same room, same Wi-Fi, other device is fine. The laptop (driver, VPN, old Wi-Fi card) is the problem."
+    },
+    "variant_of": "L02"
+  },
+  {
+    "id": "V15-L03-5g_home",
+    "complaint": "Wi-Fi drops constantly since we got a new microwave.",
+    "measurements": {
+      "download_mbps": 53,
+      "upload_mbps": 11,
+      "idle_latency_ms": 63,
+      "jitter_ms": 50,
+      "loaded_latency_down_ms": 139,
+      "loaded_latency_up_ms": 154,
+      "packet_loss_pct": 5.9,
+      "dns_lookup_ms": 17,
+      "dns_failures": 0,
+      "targets": {
+        "cloudflare_edge": {
+          "ok": true,
+          "ms": 68
+        },
+        "google": {
+          "ok": true,
+          "ms": 71
+        },
+        "netflix": {
+          "ok": true,
+          "ms": 76
+        },
+        "zoom": {
+          "ok": true,
+          "ms": 93
+        }
+      },
+      "radar": {
+        "isp": "T-Mobile Home Internet",
+        "outage_reported": false
+      },
+      "retest": {
+        "where": "laptop wired to the router",
+        "download_mbps": 208,
+        "upload_mbps": 27,
+        "idle_latency_ms": 32,
+        "jitter_ms": 8.3,
+        "packet_loss_pct": 0.0
+      }
+    },
+    "truth": {
+      "accept": [
+        "local_network"
+      ],
+      "confidence": [
+        "high",
+        "medium"
+      ],
+      "ambiguous": false,
+      "why": "Wired is perfect, Wi-Fi is lossy. 2.4 GHz interference inside the home."
+    },
+    "variant_of": "L03"
+  },
+  {
+    "id": "V16-R01-gig_cable",
+    "complaint": "Only Zoom is laggy. Everything else is fine.",
+    "measurements": {
+      "download_mbps": 1113,
+      "upload_mbps": 41,
+      "idle_latency_ms": 14,
+      "jitter_ms": 1.9,
+      "loaded_latency_down_ms": 38,
+      "loaded_latency_up_ms": 47,
+      "packet_loss_pct": 0.0,
+      "dns_lookup_ms": 19,
+      "dns_failures": 0,
+      "targets": {
+        "cloudflare_edge": {
+          "ok": true,
+          "ms": 15
+        },
+        "google": {
+          "ok": true,
+          "ms": 21
+        },
+        "netflix": {
+          "ok": true,
+          "ms": 23
+        },
+        "zoom": {
+          "ok": true,
+          "ms": 303
+        }
+      },
+      "radar": {
+        "isp": "Xfinity",
+        "outage_reported": false
+      }
+    },
+    "truth": {
+      "accept": [
+        "service_route"
+      ],
+      "confidence": [
+        "high",
+        "medium"
+      ],
+      "ambiguous": false,
+      "why": "Zoom takes 312 ms while the Cloudflare edge takes 15 ms and Google 21 ms. The path to Zoom is the problem, not the home line."
+    },
+    "variant_of": "R01"
+  },
+  {
+    "id": "V17-R02-fiber",
+    "complaint": "Netflix buffers but YouTube is perfect.",
+    "measurements": {
+      "download_mbps": 1015,
+      "upload_mbps": 940,
+      "idle_latency_ms": 6.0,
+      "jitter_ms": 0.9,
+      "loaded_latency_down_ms": 29,
+      "loaded_latency_up_ms": 38,
+      "packet_loss_pct": 0.0,
+      "dns_lookup_ms": 19,
+      "dns_failures": 0,
+      "targets": {
+        "cloudflare_edge": {
+          "ok": true,
+          "ms": 7.1
+        },
+        "google": {
+          "ok": true,
+          "ms": 14
+        },
+        "netflix": {
+          "ok": true,
+          "ms": 267
+        },
+        "zoom": {
+          "ok": true,
+          "ms": 36
+        }
+      },
+      "radar": {
+        "isp": "Verizon Fios",
+        "outage_reported": false
+      }
+    },
+    "truth": {
+      "accept": [
+        "service_route"
+      ],
+      "confidence": [
+        "high",
+        "medium"
+      ],
+      "ambiguous": false,
+      "why": "Only the Netflix server is slow to reach. A routing or peering issue between the provider and Netflix."
+    },
+    "variant_of": "R02"
+  },
+  {
+    "id": "V18-X01-dsl",
+    "complaint": "Netflix shows an error page.",
+    "measurements": {
+      "download_mbps": 42,
+      "upload_mbps": 5.3,
+      "idle_latency_ms": 27,
+      "jitter_ms": 2.9,
+      "loaded_latency_down_ms": 50,
+      "loaded_latency_up_ms": 60,
+      "packet_loss_pct": 0.0,
+      "dns_lookup_ms": 18,
+      "dns_failures": 0,
+      "targets": {
+        "cloudflare_edge": {
+          "ok": true,
+          "ms": 28
+        },
+        "google": {
+          "ok": true,
+          "ms": 36
+        },
+        "netflix": {
+          "ok": false,
+          "ms": null,
+          "http_status": 503
+        },
+        "zoom": {
+          "ok": true,
+          "ms": 57
+        }
+      },
+      "radar": {
+        "isp": "AT&T",
+        "outage_reported": false
+      }
+    },
+    "truth": {
+      "accept": [
+        "service_down"
+      ],
+      "confidence": [
+        "high",
+        "medium"
+      ],
+      "ambiguous": false,
+      "why": "Netflix returns 503 while everything else is fast. Netflix is having a problem."
+    },
+    "variant_of": "X01"
+  },
+  {
+    "id": "V19-X02-5g_home",
+    "complaint": "Can't join my Zoom meeting.",
+    "measurements": {
+      "download_mbps": 213,
+      "upload_mbps": 26,
+      "idle_latency_ms": 37,
+      "jitter_ms": 8.5,
+      "loaded_latency_down_ms": 60,
+      "loaded_latency_up_ms": 65,
+      "packet_loss_pct": 0.0,
+      "dns_lookup_ms": 19,
+      "dns_failures": 0,
+      "targets": {
+        "cloudflare_edge": {
+          "ok": true,
+          "ms": 40
+        },
+        "google": {
+          "ok": true,
+          "ms": 44
+        },
+        "netflix": {
+          "ok": true,
+          "ms": 46
+        },
+        "zoom": {
+          "ok": false,
+          "ms": null,
+          "http_status": null,
+          "error": "connection timed out"
+        }
+      },
+      "radar": {
+        "isp": "T-Mobile Home Internet",
+        "outage_reported": false
+      }
+    },
+    "truth": {
+      "accept": [
+        "service_down",
+        "service_route"
+      ],
+      "confidence": [
+        "high",
+        "medium"
+      ],
+      "ambiguous": false,
+      "why": "Zoom times out while the rest of the internet is fine. Zoom-side failure, or the path to it."
+    },
+    "variant_of": "X02"
+  },
+  {
+    "id": "V20-A01-gig_cable",
+    "complaint": "Everything is slow tonight.",
+    "measurements": {
+      "download_mbps": 35,
+      "upload_mbps": 8.1,
+      "idle_latency_ms": 51,
+      "jitter_ms": 37,
+      "loaded_latency_down_ms": 124,
+      "loaded_latency_up_ms": 137,
+      "packet_loss_pct": 2.5,
+      "dns_lookup_ms": 18,
+      "dns_failures": 0,
+      "targets": {
+        "cloudflare_edge": {
+          "ok": true,
+          "ms": 55
+        },
+        "google": {
+          "ok": true,
+          "ms": 61
+        },
+        "netflix": {
+          "ok": true,
+          "ms": 61
+        },
+        "zoom": {
+          "ok": true,
+          "ms": 79
+        }
+      },
+      "radar": {
+        "isp": "Xfinity",
+        "outage_reported": false
+      }
+    },
+    "truth": {
+      "accept": [
+        "local_or_isp",
+        "local_network",
+        "isp_problem"
+      ],
+      "confidence": [
+        "medium",
+        "low"
+      ],
+      "ambiguous": true,
+      "why": "Slow, jittery and lossy to every target, no Radar outage, no retest. Weak Wi-Fi and a sick line look identical from a browser."
+    },
+    "variant_of": "A01"
+  },
+  {
+    "id": "V21-A02-fiber",
+    "complaint": "Calls keep cutting out.",
+    "measurements": {
+      "download_mbps": 180,
+      "upload_mbps": 895,
+      "idle_latency_ms": 5.7,
+      "jitter_ms": 41,
+      "loaded_latency_down_ms": 75,
+      "loaded_latency_up_ms": 84,
+      "packet_loss_pct": 3.3,
+      "dns_lookup_ms": 21,
+      "dns_failures": 0,
+      "targets": {
+        "cloudflare_edge": {
+          "ok": true,
+          "ms": 6.7
+        },
+        "google": {
+          "ok": true,
+          "ms": 13
+        },
+        "netflix": {
+          "ok": true,
+          "ms": 16
+        },
+        "zoom": {
+          "ok": true,
+          "ms": 34
+        }
+      },
+      "radar": {
+        "isp": "Verizon Fios",
+        "outage_reported": false
+      }
+    },
+    "truth": {
+      "accept": [
+        "local_or_isp",
+        "local_network",
+        "isp_problem"
+      ],
+      "confidence": [
+        "medium",
+        "low"
+      ],
+      "ambiguous": true,
+      "why": "Speed is fine but jitter and loss are high everywhere. Could be Wi-Fi interference or line noise."
+    },
+    "variant_of": "A02"
+  },
+  {
+    "id": "V22-A03-dsl",
+    "complaint": "The internet randomly freezes for a few seconds.",
+    "measurements": {
+      "download_mbps": 45,
+      "upload_mbps": 5.0,
+      "idle_latency_ms": 28,
+      "jitter_ms": 25,
+      "loaded_latency_down_ms": 42,
+      "loaded_latency_up_ms": 51,
+      "packet_loss_pct": 1.4,
+      "dns_lookup_ms": 19,
+      "dns_failures": 0,
+      "targets": {
+        "cloudflare_edge": {
+          "ok": true,
+          "ms": 29
+        },
+        "google": {
+          "ok": true,
+          "ms": 33
+        },
+        "netflix": {
+          "ok": true,
+          "ms": 37
+        },
+        "zoom": {
+          "ok": true,
+          "ms": 57
+        }
+      },
+      "radar": {
+        "isp": "AT&T",
+        "outage_reported": false
+      }
+    },
+    "truth": {
+      "accept": [
+        "local_or_isp",
+        "local_network",
+        "isp_problem"
+      ],
+      "confidence": [
+        "medium",
+        "low"
+      ],
+      "ambiguous": true,
+      "why": "Short freezes with loss but good speed. Wi-Fi roaming, router, or line, can't tell."
+    },
+    "variant_of": "A03"
+  },
+  {
+    "id": "V23-A04-5g_home",
+    "complaint": "Downloads are really slow.",
+    "measurements": {
+      "download_mbps": 16,
+      "upload_mbps": 15,
+      "idle_latency_ms": 34,
+      "jitter_ms": 8.1,
+      "loaded_latency_down_ms": 71,
+      "loaded_latency_up_ms": 62,
+      "packet_loss_pct": 0.0,
+      "dns_lookup_ms": 19,
+      "dns_failures": 0,
+      "targets": {
+        "cloudflare_edge": {
+          "ok": true,
+          "ms": 34
+        },
+        "google": {
+          "ok": true,
+          "ms": 40
+        },
+        "netflix": {
+          "ok": true,
+          "ms": 46
+        },
+        "zoom": {
+          "ok": true,
+          "ms": 63
+        }
+      },
+      "radar": {
+        "isp": "T-Mobile Home Internet",
+        "outage_reported": false
+      }
+    },
+    "truth": {
+      "accept": [
+        "local_or_isp",
+        "local_network",
+        "isp_problem",
+        "healthy"
+      ],
+      "confidence": [
+        "medium",
+        "low"
+      ],
+      "ambiguous": true,
+      "why": "Low download, everything else clean. Could be a weak Wi-Fi link rate, a cheap plan, or provider throttling."
+    },
+    "variant_of": "A04"
+  },
+  {
+    "id": "V24-A05-gig_cable",
+    "complaint": "Pages load slowly everywhere.",
+    "measurements": {
+      "download_mbps": 1073,
+      "upload_mbps": 44,
+      "idle_latency_ms": 116,
+      "jitter_ms": 9.0,
+      "loaded_latency_down_ms": 159,
+      "loaded_latency_up_ms": 169,
+      "packet_loss_pct": 0.0,
+      "dns_lookup_ms": 21,
+      "dns_failures": 0,
+      "targets": {
+        "cloudflare_edge": {
+          "ok": true,
+          "ms": 119
+        },
+        "google": {
+          "ok": true,
+          "ms": 122
+        },
+        "netflix": {
+          "ok": true,
+          "ms": 126
+        },
+        "zoom": {
+          "ok": true,
+          "ms": 144
+        }
+      },
+      "radar": {
+        "isp": "Xfinity",
+        "outage_reported": false
+      }
+    },
+    "truth": {
+      "accept": [
+        "local_or_isp",
+        "local_network",
+        "isp_problem"
+      ],
+      "confidence": [
+        "medium",
+        "low"
+      ],
+      "ambiguous": true,
+      "why": "High latency to every target including the nearby edge, low jitter, no loss. Bad routing at the provider, or a VPN/proxy on the device."
+    },
+    "variant_of": "A05"
+  },
+  {
+    "id": "V25-A06-fiber",
+    "complaint": "My video calls are choppy and my partner's are too.",
+    "measurements": {
+      "download_mbps": 64,
+      "upload_mbps": 5.4,
+      "idle_latency_ms": 53,
+      "jitter_ms": 34,
+      "loaded_latency_down_ms": 120,
+      "loaded_latency_up_ms": 139,
+      "packet_loss_pct": 2.3,
+      "dns_lookup_ms": 18,
+      "dns_failures": 0,
+      "targets": {
+        "cloudflare_edge": {
+          "ok": true,
+          "ms": 51
+        },
+        "google": {
+          "ok": true,
+          "ms": 57
+        },
+        "netflix": {
+          "ok": true,
+          "ms": 62
+        },
+        "zoom": {
+          "ok": true,
+          "ms": 78
+        }
+      },
+      "radar": {
+        "isp": "Verizon Fios",
+        "outage_reported": false
+      }
+    },
+    "truth": {
+      "accept": [
+        "local_or_isp",
+        "local_network",
+        "isp_problem"
+      ],
+      "confidence": [
+        "medium",
+        "low"
+      ],
+      "ambiguous": true,
+      "why": "Two devices affected points away from one device, but both could be on the same bad Wi-Fi."
+    },
+    "variant_of": "A06"
+  },
+  {
+    "id": "V26-A07-dsl",
+    "complaint": "Everything is slow and I think Comcast is down.",
+    "measurements": {
+      "download_mbps": 40,
+      "upload_mbps": 8.3,
+      "idle_latency_ms": 70,
+      "jitter_ms": 31,
+      "loaded_latency_down_ms": 145,
+      "loaded_latency_up_ms": 149,
+      "packet_loss_pct": 2.1,
+      "dns_lookup_ms": 21,
+      "dns_failures": 0,
+      "targets": {
+        "cloudflare_edge": {
+          "ok": true,
+          "ms": 68
+        },
+        "google": {
+          "ok": true,
+          "ms": 80
+        },
+        "netflix": {
+          "ok": true,
+          "ms": 83
+        },
+        "zoom": {
+          "ok": true,
+          "ms": 96
+        }
+      },
+      "radar": {
+        "isp": "AT&T",
+        "outage_reported": false
+      }
+    },
+    "truth": {
+      "accept": [
+        "local_or_isp",
+        "local_network",
+        "isp_problem"
+      ],
+      "confidence": [
+        "medium",
+        "low"
+      ],
+      "ambiguous": true,
+      "why": "User blames Comcast, but Radar shows no outage. The data fits Wi-Fi just as well as the provider."
+    },
+    "variant_of": "A07"
+  },
+  {
+    "id": "V27-A08-5g_home",
+    "complaint": "Slow in the evenings, fine in the morning.",
+    "measurements": {
+      "download_mbps": 63,
+      "upload_mbps": 28,
+      "idle_latency_ms": 58,
+      "jitter_ms": 14,
+      "loaded_latency_down_ms": 128,
+      "loaded_latency_up_ms": 124,
+      "packet_loss_pct": 0.4,
+      "dns_lookup_ms": 17,
+      "dns_failures": 0,
+      "targets": {
+        "cloudflare_edge": {
+          "ok": true,
+          "ms": 57
+        },
+        "google": {
+          "ok": true,
+          "ms": 62
+        },
+        "netflix": {
+          "ok": true,
+          "ms": 66
+        },
+        "zoom": {
+          "ok": true,
+          "ms": 88
+        }
+      },
+      "radar": {
+        "isp": "T-Mobile Home Internet",
+        "outage_reported": false
+      }
+    },
+    "truth": {
+      "accept": [
+        "local_or_isp",
+        "local_network",
+        "isp_problem",
+        "bufferbloat"
+      ],
+      "confidence": [
+        "medium",
+        "low"
+      ],
+      "ambiguous": true,
+      "why": "Evening slowdowns fit provider congestion, but a busy home Wi-Fi does the same. One snapshot can't tell."
+    },
+    "variant_of": "A08"
+  },
+  {
+    "id": "V28-A09-gig_cable",
+    "complaint": "The internet drops for a minute every few hours.",
+    "measurements": {
+      "download_mbps": 1031,
+      "upload_mbps": 41,
+      "idle_latency_ms": 12,
+      "jitter_ms": 2.0,
+      "loaded_latency_down_ms": 33,
+      "loaded_latency_up_ms": 42,
+      "packet_loss_pct": 0.0,
+      "dns_lookup_ms": 17,
+      "dns_failures": 0,
+      "targets": {
+        "cloudflare_edge": {
+          "ok": true,
+          "ms": 12
+        },
+        "google": {
+          "ok": true,
+          "ms": 20
+        },
+        "netflix": {
+          "ok": true,
+          "ms": 22
+        },
+        "zoom": {
+          "ok": true,
+          "ms": 43
+        }
+      },
+      "radar": {
+        "isp": "Xfinity",
+        "outage_reported": false
+      }
+    },
+    "truth": {
+      "accept": [
+        "healthy",
+        "local_or_isp",
+        "local_network",
+        "isp_problem"
+      ],
+      "confidence": [
+        "medium",
+        "low"
+      ],
+      "ambiguous": true,
+      "why": "A healthy snapshot can't rule out an intermittent drop. The honest answer is 'looks fine now, test when it happens'."
+    },
+    "variant_of": "A09"
+  },
+  {
+    "id": "V29-A10-fiber",
+    "complaint": "Zoom froze for everyone in my meeting earlier.",
+    "measurements": {
+      "download_mbps": 896,
+      "upload_mbps": 799,
+      "idle_latency_ms": 6.3,
+      "jitter_ms": 1.0,
+      "loaded_latency_down_ms": 27,
+      "loaded_latency_up_ms": 34,
+      "packet_loss_pct": 0.0,
+      "dns_lookup_ms": 21,
+      "dns_failures": 0,
+      "targets": {
+        "cloudflare_edge": {
+          "ok": true,
+          "ms": 7.6
+        },
+        "google": {
+          "ok": true,
+          "ms": 14
+        },
+        "netflix": {
+          "ok": true,
+          "ms": 16
+        },
+        "zoom": {
+          "ok": true,
+          "ms": 34
+        }
+      },
+      "radar": {
+        "isp": "Verizon Fios",
+        "outage_reported": false
+      }
+    },
+    "truth": {
+      "accept": [
+        "healthy",
+        "service_down",
+        "service_route"
+      ],
+      "confidence": [
+        "medium",
+        "low"
+      ],
+      "ambiguous": true,
+      "why": "Everyone froze, so it was likely Zoom, but it's over and this data can't confirm it. Any of these with honest hedging is fine."
+    },
+    "variant_of": "A10"
+  },
+  {
+    "id": "V30-C01-dsl",
+    "complaint": "Netflix 4K stutters when someone else is downloading a game.",
+    "measurements": {
+      "download_mbps": 46,
+      "upload_mbps": 5.2,
+      "idle_latency_ms": 26,
+      "jitter_ms": 3.0,
+      "loaded_latency_down_ms": 129,
+      "loaded_latency_up_ms": 61,
+      "packet_loss_pct": 0.0,
+      "dns_lookup_ms": 17,
+      "dns_failures": 0,
+      "targets": {
+        "cloudflare_edge": {
+          "ok": true,
+          "ms": 22
+        },
+        "google": {
+          "ok": true,
+          "ms": 30
+        },
+        "netflix": {
+          "ok": true,
+          "ms": 32
+        },
+        "zoom": {
+          "ok": true,
+          "ms": 52
+        }
+      },
+      "radar": {
+        "isp": "AT&T",
+        "outage_reported": false
+      }
+    },
+    "truth": {
+      "accept": [
+        "bufferbloat"
+      ],
+      "confidence": [
+        "high",
+        "medium"
+      ],
+      "ambiguous": false,
+      "why": "Latency rises ~110 ms under download. Moderate bufferbloat, the most common home complaint."
+    },
+    "variant_of": "C01"
+  },
+  {
+    "id": "V31-C02-5g_home",
+    "complaint": "Every new website takes a beat before it starts loading.",
+    "measurements": {
+      "download_mbps": 246,
+      "upload_mbps": 26,
+      "idle_latency_ms": 36,
+      "jitter_ms": 8.1,
+      "loaded_latency_down_ms": 58,
+      "loaded_latency_up_ms": 66,
+      "packet_loss_pct": 0.0,
+      "dns_lookup_ms": 346,
+      "dns_failures": 0,
+      "targets": {
+        "cloudflare_edge": {
+          "ok": true,
+          "ms": 39
+        },
+        "google": {
+          "ok": true,
+          "ms": 42
+        },
+        "netflix": {
+          "ok": true,
+          "ms": 45
+        },
+        "zoom": {
+          "ok": true,
+          "ms": 66
+        }
+      },
+      "radar": {
+        "isp": "T-Mobile Home Internet",
+        "outage_reported": false
+      }
+    },
+    "truth": {
+      "accept": [
+        "dns"
+      ],
+      "confidence": [
+        "high",
+        "medium"
+      ],
+      "ambiguous": false,
+      "why": "A slow provider DNS resolver (~365 ms), nothing else wrong."
+    },
+    "variant_of": "C02"
+  },
+  {
+    "id": "V32-C03-gig_cable",
+    "complaint": "The basement office is slow, upstairs is fine.",
+    "measurements": {
+      "download_mbps": 27,
+      "upload_mbps": 6.5,
+      "idle_latency_ms": 36,
+      "jitter_ms": 25,
+      "loaded_latency_down_ms": 102,
+      "loaded_latency_up_ms": 118,
+      "packet_loss_pct": 1.5,
+      "dns_lookup_ms": 17,
+      "dns_failures": 0,
+      "targets": {
+        "cloudflare_edge": {
+          "ok": true,
+          "ms": 36
+        },
+        "google": {
+          "ok": true,
+          "ms": 42
+        },
+        "netflix": {
+          "ok": true,
+          "ms": 44
+        },
+        "zoom": {
+          "ok": true,
+          "ms": 63
+        }
+      },
+      "radar": {
+        "isp": "Xfinity",
+        "outage_reported": false
+      },
+      "retest": {
+        "where": "same laptop upstairs near the router",
+        "download_mbps": 969,
+        "upload_mbps": 37,
+        "idle_latency_ms": 14,
+        "jitter_ms": 2.0,
+        "packet_loss_pct": 0.0
+      }
+    },
+    "truth": {
+      "accept": [
+        "local_network"
+      ],
+      "confidence": [
+        "high",
+        "medium"
+      ],
+      "ambiguous": false,
+      "why": "Same laptop, good near the router and bad in the basement. Wi-Fi coverage."
+    },
+    "variant_of": "C03"
+  },
+  {
+    "id": "V33-C04-fiber",
+    "complaint": "Internet has been bad all evening.",
+    "measurements": {
+      "download_mbps": 57,
+      "upload_mbps": 9.0,
+      "idle_latency_ms": 39,
+      "jitter_ms": 24,
+      "loaded_latency_down_ms": 109,
+      "loaded_latency_up_ms": 132,
+      "packet_loss_pct": 1.5,
+      "dns_lookup_ms": 21,
+      "dns_failures": 0,
+      "targets": {
+        "cloudflare_edge": {
+          "ok": true,
+          "ms": 41
+        },
+        "google": {
+          "ok": true,
+          "ms": 46
+        },
+        "netflix": {
+          "ok": true,
+          "ms": 49
+        },
+        "zoom": {
+          "ok": true,
+          "ms": 69
+        }
+      },
+      "radar": {
+        "isp": "Verizon Fios",
+        "outage_reported": true
+      }
+    },
+    "truth": {
+      "accept": [
+        "isp_problem"
+      ],
+      "confidence": [
+        "high",
+        "medium"
+      ],
+      "ambiguous": false,
+      "why": "Degraded everywhere and Radar reports a provider outage right now."
+    },
+    "variant_of": "C04"
+  },
+  {
+    "id": "V34-C05-dsl",
+    "complaint": "My video calls freeze whenever my photo backup is running.",
+    "measurements": {
+      "download_mbps": 44,
+      "upload_mbps": 5.3,
+      "idle_latency_ms": 29,
+      "jitter_ms": 2.9,
+      "loaded_latency_down_ms": 52,
+      "loaded_latency_up_ms": 443,
+      "packet_loss_pct": 0.0,
+      "dns_lookup_ms": 18,
+      "dns_failures": 0,
+      "targets": {
+        "cloudflare_edge": {
+          "ok": true,
+          "ms": 29
+        },
+        "google": {
+          "ok": true,
+          "ms": 35
+        },
+        "netflix": {
+          "ok": true,
+          "ms": 37
+        },
+        "zoom": {
+          "ok": true,
+          "ms": 60
+        }
+      },
+      "radar": {
+        "isp": "AT&T",
+        "outage_reported": false
+      }
+    },
+    "truth": {
+      "accept": [
+        "bufferbloat"
+      ],
+      "confidence": [
+        "high",
+        "medium"
+      ],
+      "ambiguous": false,
+      "why": "Upload saturation pushes latency to ~440 ms. Upload bufferbloat."
+    },
+    "variant_of": "C05"
+  },
+  {
+    "id": "V35-O02-5g_home",
+    "complaint": "Wi-Fi says connected but no new website will open.",
+    "measurements": {
+      "download_mbps": 215,
+      "upload_mbps": 26,
+      "idle_latency_ms": 36,
+      "jitter_ms": 7.7,
+      "loaded_latency_down_ms": 60,
+      "loaded_latency_up_ms": 67,
+      "packet_loss_pct": 0.0,
+      "dns_lookup_ms": null,
+      "dns_failures": 5,
+      "targets": {
+        "cloudflare_edge": {
+          "ok": true,
+          "ms": 36
+        },
+        "google": {
+          "ok": true,
+          "ms": 42
+        },
+        "netflix": {
+          "ok": true,
+          "ms": 46
+        },
+        "zoom": {
+          "ok": true,
+          "ms": 63
+        }
+      },
+      "radar": {
+        "isp": "T-Mobile Home Internet",
+        "outage_reported": false
+      }
+    },
+    "truth": {
+      "accept": [
+        "dns"
+      ],
+      "confidence": [
+        "high",
+        "medium"
+      ],
+      "ambiguous": false,
+      "why": "All 5 fresh names fail while already-known sites (cached) still answer fast. The DNS resolver is dead."
+    },
+    "variant_of": "O02"
+  },
+  {
+    "id": "V36-O03-gig_cable",
+    "complaint": "My online game keeps rubber-banding, but speed tests look great.",
+    "measurements": {
+      "download_mbps": 1009,
+      "upload_mbps": 39,
+      "idle_latency_ms": 14,
+      "jitter_ms": 1.9,
+      "loaded_latency_down_ms": 38,
+      "loaded_latency_up_ms": 44,
+      "packet_loss_pct": 3.5,
+      "dns_lookup_ms": 19,
+      "dns_failures": 0,
+      "targets": {
+        "cloudflare_edge": {
+          "ok": true,
+          "ms": 15
+        },
+        "google": {
+          "ok": true,
+          "ms": 21
+        },
+        "netflix": {
+          "ok": true,
+          "ms": 23
+        },
+        "zoom": {
+          "ok": true,
+          "ms": 43
+        }
+      },
+      "radar": {
+        "isp": "Xfinity",
+        "outage_reported": false
+      }
+    },
+    "truth": {
+      "accept": [
+        "local_or_isp",
+        "local_network",
+        "isp_problem"
+      ],
+      "confidence": [
+        "medium",
+        "low"
+      ],
+      "ambiguous": true,
+      "why": "Loss with perfect speed and latency. Wi-Fi interference or a noisy line; one test can't tell."
+    },
+    "variant_of": "O03"
+  },
+  {
+    "id": "V37-O04-fiber",
+    "complaint": "I can't upload anything. Photos and files just hang.",
+    "measurements": {
+      "download_mbps": 941,
+      "upload_mbps": 0.8,
+      "idle_latency_ms": 6.0,
+      "jitter_ms": 0.9,
+      "loaded_latency_down_ms": 26,
+      "loaded_latency_up_ms": 862,
+      "packet_loss_pct": 0.0,
+      "dns_lookup_ms": 18,
+      "dns_failures": 0,
+      "targets": {
+        "cloudflare_edge": {
+          "ok": true,
+          "ms": 6.9
+        },
+        "google": {
+          "ok": true,
+          "ms": 12
+        },
+        "netflix": {
+          "ok": true,
+          "ms": 15
+        },
+        "zoom": {
+          "ok": true,
+          "ms": 34
+        }
+      },
+      "radar": {
+        "isp": "Verizon Fios",
+        "outage_reported": false
+      }
+    },
+    "truth": {
+      "accept": [
+        "isp_problem",
+        "local_or_isp",
+        "local_network"
+      ],
+      "confidence": [
+        "medium",
+        "low"
+      ],
+      "ambiguous": true,
+      "why": "Upload collapsed to 0.8 Mbps while download is full speed. Typical of a cable upstream fault, but a bad Wi-Fi link can also look one-sided. Bufferbloat is a symptom here, not the cause."
+    },
+    "variant_of": "O04"
+  },
+  {
+    "id": "V38-U01-dsl",
+    "complaint": "Only Google is slow. YouTube and Gmail crawl, other sites are fine.",
+    "measurements": {
+      "download_mbps": 46,
+      "upload_mbps": 5.0,
+      "idle_latency_ms": 29,
+      "jitter_ms": 3.2,
+      "loaded_latency_down_ms": 52,
+      "loaded_latency_up_ms": 61,
+      "packet_loss_pct": 0.0,
+      "dns_lookup_ms": 20,
+      "dns_failures": 0,
+      "targets": {
+        "cloudflare_edge": {
+          "ok": true,
+          "ms": 30
+        },
+        "google": {
+          "ok": true,
+          "ms": 301
+        },
+        "netflix": {
+          "ok": true,
+          "ms": 41
+        },
+        "zoom": {
+          "ok": true,
+          "ms": 56
+        }
+      },
+      "radar": {
+        "isp": "AT&T",
+        "outage_reported": false
+      }
+    },
+    "truth": {
+      "accept": [
+        "service_route"
+      ],
+      "confidence": [
+        "high",
+        "medium"
+      ],
+      "ambiguous": false,
+      "why": "Google 291 ms vs edge 15 ms with everything else normal. Path to Google."
+    },
+    "variant_of": "U01"
+  },
+  {
+    "id": "V39-U02-5g_home",
+    "complaint": "Netflix and Zoom both stopped working at the same time.",
+    "measurements": {
+      "download_mbps": 237,
+      "upload_mbps": 25,
+      "idle_latency_ms": 36,
+      "jitter_ms": 8.4,
+      "loaded_latency_down_ms": 60,
+      "loaded_latency_up_ms": 67,
+      "packet_loss_pct": 0.0,
+      "dns_lookup_ms": 19,
+      "dns_failures": 0,
+      "targets": {
+        "cloudflare_edge": {
+          "ok": true,
+          "ms": 38
+        },
+        "google": {
+          "ok": true,
+          "ms": 42
+        },
+        "netflix": {
+          "ok": false,
+          "ms": null,
+          "error": "connection timed out"
+        },
+        "zoom": {
+          "ok": false,
+          "ms": null,
+          "error": "connection timed out"
+        }
+      },
+      "radar": {
+        "isp": "T-Mobile Home Internet",
+        "outage_reported": false
+      }
+    },
+    "truth": {
+      "accept": [
+        "service_route",
+        "service_down",
+        "isp_problem"
+      ],
+      "confidence": [
+        "medium",
+        "low"
+      ],
+      "ambiguous": true,
+      "why": "Two unrelated services fail while Cloudflare and Google answer. More likely a provider routing problem than two outages, but this data can't prove it."
+    },
+    "variant_of": "U02"
+  },
+  {
+    "id": "V40-U03-gig_cable",
+    "complaint": "Our smart TV keeps buffering.",
+    "measurements": {
+      "download_mbps": 1021,
+      "upload_mbps": 44,
+      "idle_latency_ms": 14,
+      "jitter_ms": 2.2,
+      "loaded_latency_down_ms": 37,
+      "loaded_latency_up_ms": 44,
+      "packet_loss_pct": 0.0,
+      "dns_lookup_ms": 18,
+      "dns_failures": 0,
+      "targets": {
+        "cloudflare_edge": {
+          "ok": true,
+          "ms": 15
+        },
+        "google": {
+          "ok": true,
+          "ms": 21
+        },
+        "netflix": {
+          "ok": true,
+          "ms": 23
+        },
+        "zoom": {
+          "ok": true,
+          "ms": 41
+        }
+      },
+      "radar": {
+        "isp": "Xfinity",
+        "outage_reported": false
+      }
+    },
+    "truth": {
+      "accept": [
+        "healthy",
+        "local_network",
+        "local_or_isp"
+      ],
+      "confidence": [
+        "medium",
+        "low"
+      ],
+      "ambiguous": true,
+      "why": "The test ran on a phone and the line is healthy. The TV itself (its Wi-Fi or app) wasn't measured, so 'you're fine' with high confidence is wrong."
+    },
+    "variant_of": "U03"
+  },
+  {
+    "id": "V41-U05-fiber",
+    "complaint": "Sites are slow to start and video calls lag when the kids game.",
+    "measurements": {
+      "download_mbps": 914,
+      "upload_mbps": 810,
+      "idle_latency_ms": 6.4,
+      "jitter_ms": 1.0,
+      "loaded_latency_down_ms": 399,
+      "loaded_latency_up_ms": 37,
+      "packet_loss_pct": 0.0,
+      "dns_lookup_ms": 546,
+      "dns_failures": 0,
+      "targets": {
+        "cloudflare_edge": {
+          "ok": true,
+          "ms": 7.5
+        },
+        "google": {
+          "ok": true,
+          "ms": 13
+        },
+        "netflix": {
+          "ok": true,
+          "ms": 16
+        },
+        "zoom": {
+          "ok": true,
+          "ms": 36
+        }
+      },
+      "radar": {
+        "isp": "Verizon Fios",
+        "outage_reported": false
+      }
+    },
+    "truth": {
+      "accept": [
+        "dns",
+        "bufferbloat"
+      ],
+      "confidence": [
+        "high",
+        "medium"
+      ],
+      "ambiguous": false,
+      "why": "Two real problems at once: slow DNS and bufferbloat. Naming either one is right."
+    },
+    "variant_of": "U05"
+  },
+  {
+    "id": "V42-H01-5g_home",
+    "complaint": "Netflix was buffering last night.",
+    "measurements": {
+      "download_mbps": 230,
+      "upload_mbps": 28,
+      "idle_latency_ms": 35,
+      "jitter_ms": 7.6,
+      "loaded_latency_down_ms": 55,
+      "loaded_latency_up_ms": 67,
+      "packet_loss_pct": 0.0,
+      "dns_lookup_ms": 20,
+      "dns_failures": 0,
+      "targets": {
+        "cloudflare_edge": {
+          "ok": true,
+          "ms": 35
+        },
+        "google": {
+          "ok": true,
+          "ms": 41
+        },
+        "netflix": {
+          "ok": true,
+          "ms": 46
+        },
+        "zoom": {
+          "ok": true,
+          "ms": 62
+        }
+      },
+      "radar": {
+        "isp": "T-Mobile Home Internet",
+        "outage_reported": false
+      }
+    },
+    "truth": {
+      "accept": [
+        "healthy"
+      ],
+      "confidence": [
+        "high",
+        "medium"
+      ],
+      "ambiguous": false,
+      "why": "Everything is normal right now. Last night isn't visible in this data, but nothing here is broken."
+    },
+    "variant_of": "H01"
+  },
+  {
+    "id": "V43-H02-gig_cable",
+    "complaint": "The speed test says 900 but it still feels slow.",
+    "measurements": {
+      "download_mbps": 999,
+      "upload_mbps": 883,
+      "idle_latency_ms": 13,
+      "jitter_ms": 2.1,
+      "loaded_latency_down_ms": 18,
+      "loaded_latency_up_ms": 20,
+      "packet_loss_pct": 0.0,
+      "dns_lookup_ms": 8.6,
+      "dns_failures": 0,
+      "targets": {
+        "cloudflare_edge": {
+          "ok": true,
+          "ms": 14
+        },
+        "google": {
+          "ok": true,
+          "ms": 20
+        },
+        "netflix": {
+          "ok": true,
+          "ms": 22
+        },
+        "zoom": {
+          "ok": true,
+          "ms": 40
+        }
+      },
+      "radar": {
+        "isp": "Xfinity",
+        "outage_reported": false
+      }
+    },
+    "truth": {
+      "accept": [
+        "healthy"
+      ],
+      "confidence": [
+        "high",
+        "medium"
+      ],
+      "ambiguous": false,
+      "why": "Gigabit fiber with low latency. Nothing in the network is slow."
+    },
+    "variant_of": "H02"
+  },
+  {
+    "id": "V44-H03-fiber",
+    "complaint": "Is my internet slow?",
+    "measurements": {
+      "download_mbps": 50,
+      "upload_mbps": 4.4,
+      "idle_latency_ms": 19,
+      "jitter_ms": 1.0,
+      "loaded_latency_down_ms": 47,
+      "loaded_latency_up_ms": 59,
+      "packet_loss_pct": 0.0,
+      "dns_lookup_ms": 24,
+      "dns_failures": 0,
+      "targets": {
+        "cloudflare_edge": {
+          "ok": true,
+          "ms": 20
+        },
+        "google": {
+          "ok": true,
+          "ms": 26
+        },
+        "netflix": {
+          "ok": true,
+          "ms": 29
+        },
+        "zoom": {
+          "ok": true,
+          "ms": 46
+        }
+      },
+      "radar": {
+        "isp": "Verizon Fios",
+        "outage_reported": false
+      }
+    },
+    "truth": {
+      "accept": [
+        "healthy"
+      ],
+      "confidence": [
+        "high",
+        "medium"
+      ],
+      "ambiguous": false,
+      "why": "A modest DSL-class plan working as designed: steady latency, no loss, no bloat."
+    },
+    "variant_of": "H03"
+  },
+  {
+    "id": "V45-H04-dsl",
+    "complaint": "I saw on X that Comcast is down. Is mine affected?",
+    "measurements": {
+      "download_mbps": 45,
+      "upload_mbps": 5.0,
+      "idle_latency_ms": 26,
+      "jitter_ms": 3.3,
+      "loaded_latency_down_ms": 50,
+      "loaded_latency_up_ms": 54,
+      "packet_loss_pct": 0.0,
+      "dns_lookup_ms": 21,
+      "dns_failures": 0,
+      "targets": {
+        "cloudflare_edge": {
+          "ok": true,
+          "ms": 28
+        },
+        "google": {
+          "ok": true,
+          "ms": 31
+        },
+        "netflix": {
+          "ok": true,
+          "ms": 36
+        },
+        "zoom": {
+          "ok": true,
+          "ms": 57
+        }
+      },
+      "radar": {
+        "isp": "AT&T",
+        "outage_reported": true
+      }
+    },
+    "truth": {
+      "accept": [
+        "healthy"
+      ],
+      "confidence": [
+        "high",
+        "medium"
+      ],
+      "ambiguous": false,
+      "why": "Radar shows a Comcast outage somewhere, but this connection measures perfectly. Outages are regional."
+    },
+    "variant_of": "H04"
+  },
+  {
+    "id": "V46-B01-5g_home",
+    "complaint": "Zoom freezes whenever my kid is gaming or downloading.",
+    "measurements": {
+      "download_mbps": 228,
+      "upload_mbps": 27,
+      "idle_latency_ms": 32,
+      "jitter_ms": 8.1,
+      "loaded_latency_down_ms": 546,
+      "loaded_latency_up_ms": 219,
+      "packet_loss_pct": 0.0,
+      "dns_lookup_ms": 20,
+      "dns_failures": 0,
+      "targets": {
+        "cloudflare_edge": {
+          "ok": true,
+          "ms": 32
+        },
+        "google": {
+          "ok": true,
+          "ms": 39
+        },
+        "netflix": {
+          "ok": true,
+          "ms": 44
+        },
+        "zoom": {
+          "ok": true,
+          "ms": 59
+        }
+      },
+      "radar": {
+        "isp": "T-Mobile Home Internet",
+        "outage_reported": false
+      }
+    },
+    "truth": {
+      "accept": [
+        "bufferbloat"
+      ],
+      "confidence": [
+        "high",
+        "medium"
+      ],
+      "ambiguous": false,
+      "why": "Idle latency 14 ms jumps to 486 ms under download. Classic bufferbloat in the router or modem."
+    },
+    "variant_of": "B01"
+  },
+  {
+    "id": "V47-B02-gig_cable",
+    "complaint": "Video calls break up when I upload files to Google Drive.",
+    "measurements": {
+      "download_mbps": 1022,
+      "upload_mbps": 12,
+      "idle_latency_ms": 14,
+      "jitter_ms": 2.0,
+      "loaded_latency_down_ms": 49,
+      "loaded_latency_up_ms": 988,
+      "packet_loss_pct": 0.0,
+      "dns_lookup_ms": 18,
+      "dns_failures": 0,
+      "targets": {
+        "cloudflare_edge": {
+          "ok": true,
+          "ms": 14
+        },
+        "google": {
+          "ok": true,
+          "ms": 20
+        },
+        "netflix": {
+          "ok": true,
+          "ms": 24
+        },
+        "zoom": {
+          "ok": true,
+          "ms": 42
+        }
+      },
+      "radar": {
+        "isp": "Xfinity",
+        "outage_reported": false
+      }
+    },
+    "truth": {
+      "accept": [
+        "bufferbloat"
+      ],
+      "confidence": [
+        "high",
+        "medium"
+      ],
+      "ambiguous": false,
+      "why": "Upload saturation pushes latency to ~900 ms. Upload-side bufferbloat, common on cable."
+    },
+    "variant_of": "B02"
+  },
+  {
+    "id": "V48-B03-fiber",
+    "complaint": "Games lag only in the evening when everyone is home.",
+    "measurements": {
+      "download_mbps": 131,
+      "upload_mbps": 853,
+      "idle_latency_ms": 5.8,
+      "jitter_ms": 1.1,
+      "loaded_latency_down_ms": 353,
+      "loaded_latency_up_ms": 339,
+      "packet_loss_pct": 0.0,
+      "dns_lookup_ms": 21,
+      "dns_failures": 0,
+      "targets": {
+        "cloudflare_edge": {
+          "ok": true,
+          "ms": 1.8
+        },
+        "google": {
+          "ok": true,
+          "ms": 7.5
+        },
+        "netflix": {
+          "ok": true,
+          "ms": 11
+        },
+        "zoom": {
+          "ok": true,
+          "ms": 30
+        }
+      },
+      "radar": {
+        "isp": "Verizon Fios",
+        "outage_reported": false
+      }
+    },
+    "truth": {
+      "accept": [
+        "bufferbloat"
+      ],
+      "confidence": [
+        "high",
+        "medium"
+      ],
+      "ambiguous": false,
+      "why": "Healthy at idle, 300+ ms once the line is busy. Busy household plus bufferbloat."
+    },
+    "variant_of": "B03"
+  },
+  {
+    "id": "V49-D01-dsl",
+    "complaint": "Websites take forever to start loading, then load fast.",
+    "measurements": {
+      "download_mbps": 43,
+      "upload_mbps": 4.9,
+      "idle_latency_ms": 27,
+      "jitter_ms": 2.9,
+      "loaded_latency_down_ms": 52,
+      "loaded_latency_up_ms": 58,
+      "packet_loss_pct": 0.0,
+      "dns_lookup_ms": 1963,
+      "dns_failures": 0,
+      "targets": {
+        "cloudflare_edge": {
+          "ok": true,
+          "ms": 28
+        },
+        "google": {
+          "ok": true,
+          "ms": 34
+        },
+        "netflix": {
+          "ok": true,
+          "ms": 36
+        },
+        "zoom": {
+          "ok": true,
+          "ms": 54
+        }
+      },
+      "radar": {
+        "isp": "AT&T",
+        "outage_reported": false
+      }
+    },
+    "truth": {
+      "accept": [
+        "dns"
+      ],
+      "confidence": [
+        "high",
+        "medium"
+      ],
+      "ambiguous": false,
+      "why": "Lookups take ~1.8 s while speed and latency are perfect. The DNS resolver is the bottleneck."
+    },
+    "variant_of": "D01"
+  },
+  {
+    "id": "V50-D02-5g_home",
+    "complaint": "Some sites just don't open. Others are fine.",
+    "measurements": {
+      "download_mbps": 220,
+      "upload_mbps": 30,
+      "idle_latency_ms": 32,
+      "jitter_ms": 7.5,
+      "loaded_latency_down_ms": 53,
+      "loaded_latency_up_ms": 62,
+      "packet_loss_pct": 0.0,
+      "dns_lookup_ms": 421,
+      "dns_failures": 2,
+      "targets": {
+        "cloudflare_edge": {
+          "ok": true,
+          "ms": 33
+        },
+        "google": {
+          "ok": true,
+          "ms": 41
+        },
+        "netflix": {
+          "ok": true,
+          "ms": 44
+        },
+        "zoom": {
+          "ok": true,
+          "ms": 63
+        }
+      },
+      "radar": {
+        "isp": "T-Mobile Home Internet",
+        "outage_reported": false
+      }
+    },
+    "truth": {
+      "accept": [
+        "dns"
+      ],
+      "confidence": [
+        "high",
+        "medium"
+      ],
+      "ambiguous": false,
+      "why": "2 of 5 fresh names fail to resolve; the line itself is clean. DNS problem."
+    },
+    "variant_of": "D02"
+  },
+  {
+    "id": "V51-D03-gig_cable",
+    "complaint": "Everything feels sluggish when I click a link.",
+    "measurements": {
+      "download_mbps": 95,
+      "upload_mbps": 12,
+      "idle_latency_ms": 13,
+      "jitter_ms": 2.1,
+      "loaded_latency_down_ms": 54,
+      "loaded_latency_up_ms": 57,
+      "packet_loss_pct": 0.0,
+      "dns_lookup_ms": 628,
+      "dns_failures": 0,
+      "targets": {
+        "cloudflare_edge": {
+          "ok": true,
+          "ms": 13
+        },
+        "google": {
+          "ok": true,
+          "ms": 20
+        },
+        "netflix": {
+          "ok": true,
+          "ms": 22
+        },
+        "zoom": {
+          "ok": true,
+          "ms": 40
+        }
+      },
+      "radar": {
+        "isp": "Xfinity",
+        "outage_reported": false
+      }
+    },
+    "truth": {
+      "accept": [
+        "dns"
+      ],
+      "confidence": [
+        "high",
+        "medium"
+      ],
+      "ambiguous": false,
+      "why": "A slower but healthy plan with ~700 ms lookups. The click-to-load delay is DNS."
+    },
+    "variant_of": "D03"
+  },
+  {
+    "id": "V52-I01-fiber",
+    "complaint": "Everything is slow and Zoom keeps dropping.",
+    "measurements": {
+      "download_mbps": 23,
+      "upload_mbps": 3.7,
+      "idle_latency_ms": 88,
+      "jitter_ms": 43,
+      "loaded_latency_down_ms": 155,
+      "loaded_latency_up_ms": 169,
+      "packet_loss_pct": 4.5,
+      "dns_lookup_ms": 19,
+      "dns_failures": 0,
+      "targets": {
+        "cloudflare_edge": {
+          "ok": true,
+          "ms": 89
+        },
+        "google": {
+          "ok": true,
+          "ms": 99
+        },
+        "netflix": {
+          "ok": true,
+          "ms": 99
+        },
+        "zoom": {
+          "ok": true,
+          "ms": 120
+        }
+      },
+      "radar": {
+        "isp": "Verizon Fios",
+        "outage_reported": true
+      }
+    },
+    "truth": {
+      "accept": [
+        "isp_problem"
+      ],
+      "confidence": [
+        "high",
+        "medium"
+      ],
+      "ambiguous": false,
+      "why": "Every target is slow and lossy, and Radar reports an outage for this provider right now."
+    },
+    "variant_of": "I01"
+  },
+  {
+    "id": "V53-I03-dsl",
+    "complaint": "Slow on Wi-Fi, so I plugged in a cable. Still slow.",
+    "measurements": {
+      "download_mbps": 32,
+      "upload_mbps": 5.6,
+      "idle_latency_ms": 96,
+      "jitter_ms": 27,
+      "loaded_latency_down_ms": 172,
+      "loaded_latency_up_ms": 181,
+      "packet_loss_pct": 3.2,
+      "dns_lookup_ms": 17,
+      "dns_failures": 0,
+      "targets": {
+        "cloudflare_edge": {
+          "ok": true,
+          "ms": 98
+        },
+        "google": {
+          "ok": true,
+          "ms": 99
+        },
+        "netflix": {
+          "ok": true,
+          "ms": 98
+        },
+        "zoom": {
+          "ok": true,
+          "ms": 117
+        }
+      },
+      "radar": {
+        "isp": "AT&T",
+        "outage_reported": false
+      },
+      "retest": {
+        "where": "laptop wired to the router",
+        "download_mbps": 35,
+        "upload_mbps": 5.5,
+        "idle_latency_ms": 85,
+        "jitter_ms": 27,
+        "packet_loss_pct": 2.8
+      }
+    },
+    "truth": {
+      "accept": [
+        "isp_problem"
+      ],
+      "confidence": [
+        "high",
+        "medium"
+      ],
+      "ambiguous": false,
+      "why": "Bad on Wi-Fi and equally bad on a cable. Wi-Fi is ruled out. It's the line or the provider, with modem/router a distant second."
+    },
+    "variant_of": "I03"
   }
 ]

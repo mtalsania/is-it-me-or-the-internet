@@ -70,7 +70,9 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--setup", choices=["A", "B", "both"], default="both")
     ap.add_argument("--model", choices=list(MODELS), default="sonnet")
-    ap.add_argument("--runs", type=int, default=3)
+    ap.add_argument("--runs", type=int, default=3, help="repeats for Setup A")
+    ap.add_argument("--b-runs", type=int, default=1,
+                    help="repeats for Setup B (its verdict comes from the rules, so 1 is enough)")
     ap.add_argument("--limit", type=int, default=None, help="only the first N scenarios")
     ap.add_argument("--dry-run", action="store_true")
     args = ap.parse_args()
@@ -87,7 +89,8 @@ def main():
         for sc in scenarios:
             d = diagnose(sc["measurements"])
             print(f"{sc['id']}: rules -> {d['verdict']} ({d['confidence']})")
-        print(f"\nWould make {len(scenarios) * len(setups) * args.runs} calls to {model_id}.")
+        n = len(scenarios) * sum(args.runs if s == "A" else args.b_runs for s in setups)
+        print(f"\nWould make {n} calls to {model_id}.")
         return
 
     import anthropic
@@ -95,7 +98,7 @@ def main():
     RAW.mkdir(parents=True, exist_ok=True)
     total = 0.0
     for s in setups:
-        for run in range(1, args.runs + 1):
+        for run in range(1, (args.runs if s == "A" else args.b_runs) + 1):
             out = RAW / f"{s}_{args.model}_run{run}.jsonl"
             with ThreadPoolExecutor(max_workers=4) as pool:
                 rows = list(pool.map(lambda sc: call(client, s, model_id, sc, run), scenarios))
