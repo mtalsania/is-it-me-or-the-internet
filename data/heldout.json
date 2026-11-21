@@ -1,0 +1,1022 @@
+[
+  {
+    "id": "K01",
+    "complaint": "My game lagged badly last night.",
+    "user_provider": "Comcast",
+    "measurements": {
+      "download_mbps": 288,
+      "upload_mbps": 21,
+      "idle_latency_ms": 14,
+      "jitter_ms": 2.1,
+      "loaded_latency_down_ms": 36,
+      "loaded_latency_up_ms": 44,
+      "packet_loss_pct": 0.0,
+      "dns_lookup_ms": 19,
+      "dns_failures": 0,
+      "targets": {
+        "cloudflare_edge": {
+          "ok": true,
+          "ms": 15
+        },
+        "google": {
+          "ok": true,
+          "ms": 21
+        },
+        "netflix": {
+          "ok": true,
+          "ms": 24
+        },
+        "zoom": {
+          "ok": true,
+          "ms": 43
+        }
+      },
+      "radar": {
+        "isp": "Comcast",
+        "outage_reported": false
+      }
+    },
+    "truth": {
+      "accept": [
+        "healthy",
+        "local_or_isp",
+        "local_network",
+        "isp_problem"
+      ],
+      "confidence": [
+        "medium",
+        "low"
+      ],
+      "ambiguous": true,
+      "why": "Healthy now; last night isn't visible. 'Looks fine now, test when it happens.'"
+    }
+  },
+  {
+    "id": "K02",
+    "complaint": "I think my Wi-Fi is acting up. Everything is choppy.",
+    "user_provider": "Comcast",
+    "measurements": {
+      "download_mbps": 33,
+      "upload_mbps": 5,
+      "idle_latency_ms": 71,
+      "jitter_ms": 35,
+      "loaded_latency_down_ms": 141,
+      "loaded_latency_up_ms": 156,
+      "packet_loss_pct": 3.1,
+      "dns_lookup_ms": 19,
+      "dns_failures": 0,
+      "targets": {
+        "cloudflare_edge": {
+          "ok": true,
+          "ms": 70
+        },
+        "google": {
+          "ok": true,
+          "ms": 76
+        },
+        "netflix": {
+          "ok": true,
+          "ms": 79
+        },
+        "zoom": {
+          "ok": true,
+          "ms": 98
+        }
+      },
+      "radar": {
+        "isp": "Comcast",
+        "outage_reported": true
+      }
+    },
+    "truth": {
+      "accept": [
+        "isp_problem"
+      ],
+      "confidence": [
+        "high",
+        "medium"
+      ],
+      "ambiguous": false,
+      "why": "User blames Wi-Fi, but every target is degraded and Radar reports a provider outage now."
+    }
+  },
+  {
+    "id": "K03",
+    "complaint": "Is the outage I read about affecting me?",
+    "user_provider": "Comcast",
+    "measurements": {
+      "download_mbps": 305,
+      "upload_mbps": 21,
+      "idle_latency_ms": 14,
+      "jitter_ms": 2.1,
+      "loaded_latency_down_ms": 36,
+      "loaded_latency_up_ms": 44,
+      "packet_loss_pct": 0.0,
+      "dns_lookup_ms": 19,
+      "dns_failures": 0,
+      "targets": {
+        "cloudflare_edge": {
+          "ok": true,
+          "ms": 15
+        },
+        "google": {
+          "ok": true,
+          "ms": 21
+        },
+        "netflix": {
+          "ok": true,
+          "ms": 24
+        },
+        "zoom": {
+          "ok": true,
+          "ms": 43
+        }
+      },
+      "radar": {
+        "isp": "Comcast",
+        "outage_reported": true
+      }
+    },
+    "truth": {
+      "accept": [
+        "healthy"
+      ],
+      "confidence": [
+        "high",
+        "medium"
+      ],
+      "ambiguous": false,
+      "why": "Radar shows a provider outage somewhere, but this line is perfect. Outages are regional."
+    }
+  },
+  {
+    "id": "K04",
+    "complaint": "My Xfinity internet feels slow on my phone.",
+    "user_provider": "Xfinity",
+    "measurements": {
+      "download_mbps": 118,
+      "upload_mbps": 14,
+      "idle_latency_ms": 38,
+      "jitter_ms": 11,
+      "loaded_latency_down_ms": 92,
+      "loaded_latency_up_ms": 140,
+      "packet_loss_pct": 0.0,
+      "dns_lookup_ms": 19,
+      "dns_failures": 0,
+      "targets": {
+        "cloudflare_edge": {
+          "ok": true,
+          "ms": 39
+        },
+        "google": {
+          "ok": true,
+          "ms": 45
+        },
+        "netflix": {
+          "ok": true,
+          "ms": 48
+        },
+        "zoom": {
+          "ok": true,
+          "ms": 67
+        }
+      },
+      "radar": {
+        "isp": "AT&T Mobility",
+        "outage_reported": false
+      }
+    },
+    "truth": {
+      "accept": [
+        "local_network"
+      ],
+      "confidence": [
+        "high",
+        "medium"
+      ],
+      "ambiguous": false,
+      "why": "The test ran over AT&T's cellular network, not the user's Xfinity home line. The phone isn't on home Wi-Fi."
+    }
+  },
+  {
+    "id": "K05",
+    "complaint": "Calls freeze whenever my partner uploads videos.",
+    "user_provider": "Spectrum",
+    "measurements": {
+      "download_mbps": 305,
+      "upload_mbps": 10,
+      "idle_latency_ms": 14,
+      "jitter_ms": 2.1,
+      "loaded_latency_down_ms": 36,
+      "loaded_latency_up_ms": 512,
+      "packet_loss_pct": 0.0,
+      "dns_lookup_ms": 19,
+      "dns_failures": 0,
+      "targets": {
+        "cloudflare_edge": {
+          "ok": true,
+          "ms": 15
+        },
+        "google": {
+          "ok": true,
+          "ms": 21
+        },
+        "netflix": {
+          "ok": true,
+          "ms": 24
+        },
+        "zoom": {
+          "ok": true,
+          "ms": 43
+        }
+      },
+      "radar": {
+        "isp": "Charter Communications",
+        "outage_reported": false
+      }
+    },
+    "truth": {
+      "accept": [
+        "bufferbloat"
+      ],
+      "confidence": [
+        "high",
+        "medium"
+      ],
+      "ambiguous": false,
+      "why": "Upload bufferbloat. (Spectrum is Charter's brand, so the provider name is not a mismatch.)"
+    }
+  },
+  {
+    "id": "K06",
+    "complaint": "Nothing works at all.",
+    "user_provider": "Verizon Fios",
+    "measurements": {
+      "download_mbps": 0.0,
+      "upload_mbps": 0.0,
+      "idle_latency_ms": null,
+      "jitter_ms": null,
+      "loaded_latency_down_ms": null,
+      "loaded_latency_up_ms": null,
+      "packet_loss_pct": 100.0,
+      "dns_lookup_ms": null,
+      "dns_failures": 5,
+      "targets": {
+        "cloudflare_edge": {
+          "ok": false,
+          "ms": null
+        },
+        "google": {
+          "ok": false,
+          "ms": null
+        },
+        "netflix": {
+          "ok": false,
+          "ms": null
+        },
+        "zoom": {
+          "ok": false,
+          "ms": null
+        }
+      },
+      "radar": {
+        "isp": "Verizon Fios",
+        "outage_reported": false
+      }
+    },
+    "truth": {
+      "accept": [
+        "local_or_isp",
+        "local_network",
+        "isp_problem"
+      ],
+      "confidence": [
+        "medium",
+        "low"
+      ],
+      "ambiguous": true,
+      "why": "Total loss, no Radar outage. Router, modem or line; can't tell without a check at the router."
+    }
+  },
+  {
+    "id": "K07",
+    "complaint": "Coffee shop Wi-Fi says connected but pages won't open.",
+    "user_provider": "Coffee shop Wi-Fi",
+    "measurements": {
+      "download_mbps": 0.0,
+      "upload_mbps": 0.0,
+      "idle_latency_ms": null,
+      "jitter_ms": null,
+      "loaded_latency_down_ms": null,
+      "loaded_latency_up_ms": null,
+      "packet_loss_pct": null,
+      "dns_lookup_ms": 25,
+      "dns_failures": 0,
+      "targets": {
+        "cloudflare_edge": {
+          "ok": false,
+          "ms": null,
+          "http_status": 302
+        },
+        "google": {
+          "ok": false,
+          "ms": null,
+          "http_status": 302
+        },
+        "netflix": {
+          "ok": false,
+          "ms": null,
+          "http_status": 302
+        },
+        "zoom": {
+          "ok": false,
+          "ms": null,
+          "http_status": 302
+        }
+      },
+      "radar": {
+        "isp": "Coffee shop Wi-Fi",
+        "outage_reported": false
+      }
+    },
+    "truth": {
+      "accept": [
+        "local_network"
+      ],
+      "confidence": [
+        "high",
+        "medium"
+      ],
+      "ambiguous": false,
+      "why": "Every site redirects (302): a sign-in page on the local network."
+    }
+  },
+  {
+    "id": "K08",
+    "complaint": "Slow in the kitchen.",
+    "user_provider": "Comcast",
+    "measurements": {
+      "download_mbps": 24,
+      "upload_mbps": 6,
+      "idle_latency_ms": 44,
+      "jitter_ms": 29,
+      "loaded_latency_down_ms": 114,
+      "loaded_latency_up_ms": 129,
+      "packet_loss_pct": 2.0,
+      "dns_lookup_ms": 19,
+      "dns_failures": 0,
+      "targets": {
+        "cloudflare_edge": {
+          "ok": true,
+          "ms": 45
+        },
+        "google": {
+          "ok": true,
+          "ms": 51
+        },
+        "netflix": {
+          "ok": true,
+          "ms": 54
+        },
+        "zoom": {
+          "ok": true,
+          "ms": 73
+        }
+      },
+      "radar": {
+        "isp": "Comcast",
+        "outage_reported": false
+      },
+      "retest": {
+        "where": "laptop wired to the router",
+        "download_mbps": 302,
+        "upload_mbps": 22,
+        "idle_latency_ms": 13,
+        "jitter_ms": 1.8,
+        "packet_loss_pct": 0.0
+      }
+    },
+    "truth": {
+      "accept": [
+        "local_network"
+      ],
+      "confidence": [
+        "high",
+        "medium"
+      ],
+      "ambiguous": false,
+      "why": "Wired is perfect. Wi-Fi coverage in the kitchen."
+    }
+  },
+  {
+    "id": "K09",
+    "complaint": "Slow everywhere, even with a cable.",
+    "user_provider": "Comcast",
+    "measurements": {
+      "download_mbps": 31,
+      "upload_mbps": 5,
+      "idle_latency_ms": 92,
+      "jitter_ms": 31,
+      "loaded_latency_down_ms": 162,
+      "loaded_latency_up_ms": 177,
+      "packet_loss_pct": 2.6,
+      "dns_lookup_ms": 19,
+      "dns_failures": 0,
+      "targets": {
+        "cloudflare_edge": {
+          "ok": true,
+          "ms": 93
+        },
+        "google": {
+          "ok": true,
+          "ms": 99
+        },
+        "netflix": {
+          "ok": true,
+          "ms": 102
+        },
+        "zoom": {
+          "ok": true,
+          "ms": 121
+        }
+      },
+      "radar": {
+        "isp": "Comcast",
+        "outage_reported": false
+      },
+      "retest": {
+        "where": "laptop wired to the router",
+        "download_mbps": 33,
+        "upload_mbps": 5,
+        "idle_latency_ms": 90,
+        "jitter_ms": 30,
+        "packet_loss_pct": 2.4
+      }
+    },
+    "truth": {
+      "accept": [
+        "isp_problem",
+        "local_or_isp"
+      ],
+      "confidence": [
+        "high",
+        "medium"
+      ],
+      "ambiguous": false,
+      "why": "Bad even when wired, so not Wi-Fi. Most likely the line or provider; the modem is possible."
+    }
+  },
+  {
+    "id": "K10",
+    "complaint": "Websites hang for a second before loading.",
+    "user_provider": "Comcast",
+    "measurements": {
+      "download_mbps": 305,
+      "upload_mbps": 21,
+      "idle_latency_ms": 14,
+      "jitter_ms": 2.1,
+      "loaded_latency_down_ms": 36,
+      "loaded_latency_up_ms": 44,
+      "packet_loss_pct": 0.0,
+      "dns_lookup_ms": 910,
+      "dns_failures": 0,
+      "targets": {
+        "cloudflare_edge": {
+          "ok": true,
+          "ms": 15
+        },
+        "google": {
+          "ok": true,
+          "ms": 21
+        },
+        "netflix": {
+          "ok": true,
+          "ms": 24
+        },
+        "zoom": {
+          "ok": true,
+          "ms": 43
+        }
+      },
+      "radar": {
+        "isp": "Comcast",
+        "outage_reported": false
+      }
+    },
+    "truth": {
+      "accept": [
+        "dns"
+      ],
+      "confidence": [
+        "high",
+        "medium"
+      ],
+      "ambiguous": false,
+      "why": "Slow DNS, everything else fine."
+    }
+  },
+  {
+    "id": "K11",
+    "complaint": "Zoom freezes when the cloud backup runs.",
+    "user_provider": "Comcast",
+    "measurements": {
+      "download_mbps": 305,
+      "upload_mbps": 21,
+      "idle_latency_ms": 14,
+      "jitter_ms": 2.1,
+      "loaded_latency_down_ms": 36,
+      "loaded_latency_up_ms": 603,
+      "packet_loss_pct": 0.0,
+      "dns_lookup_ms": 19,
+      "dns_failures": 0,
+      "targets": {
+        "cloudflare_edge": {
+          "ok": true,
+          "ms": 15
+        },
+        "google": {
+          "ok": true,
+          "ms": 21
+        },
+        "netflix": {
+          "ok": true,
+          "ms": 24
+        },
+        "zoom": {
+          "ok": true,
+          "ms": 43
+        }
+      },
+      "radar": {
+        "isp": "Comcast",
+        "outage_reported": false
+      }
+    },
+    "truth": {
+      "accept": [
+        "bufferbloat"
+      ],
+      "confidence": [
+        "high",
+        "medium"
+      ],
+      "ambiguous": false,
+      "why": "Upload bufferbloat."
+    }
+  },
+  {
+    "id": "K12",
+    "complaint": "Netflix buffers, YouTube is fine.",
+    "user_provider": "Comcast",
+    "measurements": {
+      "download_mbps": 305,
+      "upload_mbps": 21,
+      "idle_latency_ms": 14,
+      "jitter_ms": 2.1,
+      "loaded_latency_down_ms": 36,
+      "loaded_latency_up_ms": 44,
+      "packet_loss_pct": 0.0,
+      "dns_lookup_ms": 19,
+      "dns_failures": 0,
+      "targets": {
+        "cloudflare_edge": {
+          "ok": true,
+          "ms": 15
+        },
+        "google": {
+          "ok": true,
+          "ms": 21
+        },
+        "netflix": {
+          "ok": true,
+          "ms": 243
+        },
+        "zoom": {
+          "ok": true,
+          "ms": 43
+        }
+      },
+      "radar": {
+        "isp": "Comcast",
+        "outage_reported": false
+      }
+    },
+    "truth": {
+      "accept": [
+        "service_route"
+      ],
+      "confidence": [
+        "high",
+        "medium"
+      ],
+      "ambiguous": false,
+      "why": "Only the Netflix path is slow."
+    }
+  },
+  {
+    "id": "K13",
+    "complaint": "Zoom shows an error page.",
+    "user_provider": "Comcast",
+    "measurements": {
+      "download_mbps": 305,
+      "upload_mbps": 21,
+      "idle_latency_ms": 14,
+      "jitter_ms": 2.1,
+      "loaded_latency_down_ms": 36,
+      "loaded_latency_up_ms": 44,
+      "packet_loss_pct": 0.0,
+      "dns_lookup_ms": 19,
+      "dns_failures": 0,
+      "targets": {
+        "cloudflare_edge": {
+          "ok": true,
+          "ms": 15
+        },
+        "google": {
+          "ok": true,
+          "ms": 21
+        },
+        "netflix": {
+          "ok": true,
+          "ms": 24
+        },
+        "zoom": {
+          "ok": false,
+          "ms": null,
+          "http_status": 503
+        }
+      },
+      "radar": {
+        "isp": "Comcast",
+        "outage_reported": false
+      }
+    },
+    "truth": {
+      "accept": [
+        "service_down"
+      ],
+      "confidence": [
+        "high",
+        "medium"
+      ],
+      "ambiguous": false,
+      "why": "Zoom returns 503; the rest is fine."
+    }
+  },
+  {
+    "id": "K14",
+    "complaint": "Calls keep cutting out.",
+    "user_provider": "Comcast",
+    "measurements": {
+      "download_mbps": 160,
+      "upload_mbps": 15,
+      "idle_latency_ms": 29,
+      "jitter_ms": 33,
+      "loaded_latency_down_ms": 99,
+      "loaded_latency_up_ms": 114,
+      "packet_loss_pct": 2.9,
+      "dns_lookup_ms": 19,
+      "dns_failures": 0,
+      "targets": {
+        "cloudflare_edge": {
+          "ok": true,
+          "ms": 29
+        },
+        "google": {
+          "ok": true,
+          "ms": 35
+        },
+        "netflix": {
+          "ok": true,
+          "ms": 38
+        },
+        "zoom": {
+          "ok": true,
+          "ms": 57
+        }
+      },
+      "radar": {
+        "isp": "Comcast",
+        "outage_reported": false
+      }
+    },
+    "truth": {
+      "accept": [
+        "local_or_isp",
+        "local_network",
+        "isp_problem"
+      ],
+      "confidence": [
+        "medium",
+        "low"
+      ],
+      "ambiguous": true,
+      "why": "Jitter and loss everywhere, no outage, no retest. Wi-Fi vs line can't be separated."
+    }
+  },
+  {
+    "id": "K15",
+    "complaint": "Downloads are slow.",
+    "user_provider": "AT&T",
+    "measurements": {
+      "download_mbps": 15,
+      "upload_mbps": 14,
+      "idle_latency_ms": 14,
+      "jitter_ms": 2.1,
+      "loaded_latency_down_ms": 46,
+      "loaded_latency_up_ms": 44,
+      "packet_loss_pct": 0.0,
+      "dns_lookup_ms": 19,
+      "dns_failures": 0,
+      "targets": {
+        "cloudflare_edge": {
+          "ok": true,
+          "ms": 15
+        },
+        "google": {
+          "ok": true,
+          "ms": 21
+        },
+        "netflix": {
+          "ok": true,
+          "ms": 24
+        },
+        "zoom": {
+          "ok": true,
+          "ms": 43
+        }
+      },
+      "radar": {
+        "isp": "Comcast",
+        "outage_reported": false
+      }
+    },
+    "truth": {
+      "accept": [
+        "local_or_isp",
+        "local_network",
+        "isp_problem",
+        "healthy"
+      ],
+      "confidence": [
+        "medium",
+        "low"
+      ],
+      "ambiguous": true,
+      "why": "Only download is low. Weak Wi-Fi rate, a cheap plan, or throttling."
+    }
+  },
+  {
+    "id": "K16",
+    "complaint": "Our smart speaker keeps dropping off.",
+    "user_provider": "Comcast",
+    "measurements": {
+      "download_mbps": 305,
+      "upload_mbps": 21,
+      "idle_latency_ms": 14,
+      "jitter_ms": 2.1,
+      "loaded_latency_down_ms": 36,
+      "loaded_latency_up_ms": 44,
+      "packet_loss_pct": 0.0,
+      "dns_lookup_ms": 19,
+      "dns_failures": 0,
+      "targets": {
+        "cloudflare_edge": {
+          "ok": true,
+          "ms": 15
+        },
+        "google": {
+          "ok": true,
+          "ms": 21
+        },
+        "netflix": {
+          "ok": true,
+          "ms": 24
+        },
+        "zoom": {
+          "ok": true,
+          "ms": 43
+        }
+      },
+      "radar": {
+        "isp": "Comcast",
+        "outage_reported": false
+      }
+    },
+    "truth": {
+      "accept": [
+        "healthy",
+        "local_network",
+        "local_or_isp"
+      ],
+      "confidence": [
+        "medium",
+        "low"
+      ],
+      "ambiguous": true,
+      "why": "The laptop test is healthy; the speaker wasn't measured."
+    }
+  },
+  {
+    "id": "K17",
+    "complaint": "We have Starlink. Is this normal?",
+    "user_provider": "Starlink",
+    "measurements": {
+      "download_mbps": 163,
+      "upload_mbps": 17,
+      "idle_latency_ms": 38,
+      "jitter_ms": 14,
+      "loaded_latency_down_ms": 86,
+      "loaded_latency_up_ms": 97,
+      "packet_loss_pct": 0.8,
+      "dns_lookup_ms": 19,
+      "dns_failures": 0,
+      "targets": {
+        "cloudflare_edge": {
+          "ok": true,
+          "ms": 41
+        },
+        "google": {
+          "ok": true,
+          "ms": 47
+        },
+        "netflix": {
+          "ok": true,
+          "ms": 50
+        },
+        "zoom": {
+          "ok": true,
+          "ms": 69
+        }
+      },
+      "radar": {
+        "isp": "SpaceX Starlink",
+        "outage_reported": false
+      }
+    },
+    "truth": {
+      "accept": [
+        "healthy"
+      ],
+      "confidence": [
+        "high",
+        "medium"
+      ],
+      "ambiguous": false,
+      "why": "Normal for low-orbit satellite internet: some jitter and minor loss, no fault."
+    }
+  },
+  {
+    "id": "K18",
+    "complaint": "My 5G home internet stutters on video calls.",
+    "user_provider": "T-Mobile Home Internet",
+    "measurements": {
+      "download_mbps": 196,
+      "upload_mbps": 21,
+      "idle_latency_ms": 36,
+      "jitter_ms": 24,
+      "loaded_latency_down_ms": 98,
+      "loaded_latency_up_ms": 113,
+      "packet_loss_pct": 0.6,
+      "dns_lookup_ms": 19,
+      "dns_failures": 0,
+      "targets": {
+        "cloudflare_edge": {
+          "ok": true,
+          "ms": 37
+        },
+        "google": {
+          "ok": true,
+          "ms": 43
+        },
+        "netflix": {
+          "ok": true,
+          "ms": 46
+        },
+        "zoom": {
+          "ok": true,
+          "ms": 65
+        }
+      },
+      "radar": {
+        "isp": "T-Mobile Home Internet",
+        "outage_reported": false
+      }
+    },
+    "truth": {
+      "accept": [
+        "local_or_isp",
+        "isp_problem",
+        "local_network",
+        "healthy"
+      ],
+      "confidence": [
+        "medium",
+        "low"
+      ],
+      "ambiguous": true,
+      "why": "Jitter is on the high side even for 5G home. Could be the 5G signal at the window or the home Wi-Fi."
+    }
+  },
+  {
+    "id": "K19",
+    "complaint": "Internet is completely down.",
+    "user_provider": "Spectrum",
+    "measurements": {
+      "download_mbps": 0.0,
+      "upload_mbps": 0.0,
+      "idle_latency_ms": null,
+      "jitter_ms": null,
+      "loaded_latency_down_ms": null,
+      "loaded_latency_up_ms": null,
+      "packet_loss_pct": 100.0,
+      "dns_lookup_ms": null,
+      "dns_failures": 5,
+      "targets": {
+        "cloudflare_edge": {
+          "ok": false,
+          "ms": null
+        },
+        "google": {
+          "ok": false,
+          "ms": null
+        },
+        "netflix": {
+          "ok": false,
+          "ms": null
+        },
+        "zoom": {
+          "ok": false,
+          "ms": null
+        }
+      },
+      "radar": {
+        "isp": "Charter Communications",
+        "outage_reported": true
+      }
+    },
+    "truth": {
+      "accept": [
+        "isp_problem"
+      ],
+      "confidence": [
+        "high",
+        "medium"
+      ],
+      "ambiguous": false,
+      "why": "Nothing reachable and Radar reports a provider outage."
+    }
+  },
+  {
+    "id": "K20",
+    "complaint": "Sites are slow to start and Zoom won't connect.",
+    "user_provider": "Comcast",
+    "measurements": {
+      "download_mbps": 305,
+      "upload_mbps": 21,
+      "idle_latency_ms": 14,
+      "jitter_ms": 2.1,
+      "loaded_latency_down_ms": 36,
+      "loaded_latency_up_ms": 44,
+      "packet_loss_pct": 0.0,
+      "dns_lookup_ms": 640,
+      "dns_failures": 0,
+      "targets": {
+        "cloudflare_edge": {
+          "ok": true,
+          "ms": 15
+        },
+        "google": {
+          "ok": true,
+          "ms": 21
+        },
+        "netflix": {
+          "ok": true,
+          "ms": 24
+        },
+        "zoom": {
+          "ok": false,
+          "ms": null,
+          "error": "connection timed out"
+        }
+      },
+      "radar": {
+        "isp": "Comcast",
+        "outage_reported": false
+      }
+    },
+    "truth": {
+      "accept": [
+        "dns",
+        "service_down",
+        "service_route"
+      ],
+      "confidence": [
+        "high",
+        "medium"
+      ],
+      "ambiguous": false,
+      "why": "Two separate problems: slow DNS and Zoom unreachable. Naming either is right."
+    }
+  }
+]
