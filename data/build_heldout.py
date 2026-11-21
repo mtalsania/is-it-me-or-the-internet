@@ -93,7 +93,7 @@ add("K14", "Calls keep cutting out.", "Comcast",
     ["local_or_isp", "local_network", "isp_problem"], AMB, True,
     "Jitter and loss everywhere, no outage, no retest. Wi-Fi vs line can't be separated.")
 add("K15", "Downloads are slow.", "AT&T",
-    make({"download_mbps": 15, "upload_mbps": 14, "loaded_latency_down_ms": 46}),
+    make({"download_mbps": 15, "upload_mbps": 14, "loaded_latency_down_ms": 46}, radar={"isp": "AT&T"}),
     ["local_or_isp", "local_network", "isp_problem", "healthy"], AMB, True,
     "Only download is low. Weak Wi-Fi rate, a cheap plan, or throttling.")
 add("K16", "Our smart speaker keeps dropping off.", "Comcast",
