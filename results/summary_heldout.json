@@ -28,5 +28,70 @@
       ]
     ],
     "cost_per_1000_usd": 0.0
+  },
+  "Setup A - sonnet": {
+    "diagnoses": 60,
+    "right_overall_pct": 95.0,
+    "right_verdict_pct": 95.0,
+    "confidently_wrong": 0,
+    "confidently_wrong_pct": 0.0,
+    "ambiguous_right_pct": 100.0,
+    "ambiguous_follow_up_pct": 100.0,
+    "stable_scenarios": "18/20",
+    "unparsed": 0,
+    "misses": [
+      [
+        "K04",
+        "healthy/low"
+      ],
+      [
+        "K04",
+        "healthy/low"
+      ],
+      [
+        "K04",
+        "healthy/low"
+      ]
+    ],
+    "cost_per_1000_usd": 6.74,
+    "total_cost_usd": 0.4044
+  },
+  "Setup C - sonnet": {
+    "diagnoses": 60,
+    "right_overall_pct": 95.0,
+    "right_verdict_pct": 95.0,
+    "confidently_wrong": 0,
+    "confidently_wrong_pct": 0.0,
+    "ambiguous_right_pct": 100.0,
+    "ambiguous_follow_up_pct": 100.0,
+    "stable_scenarios": "17/20",
+    "unparsed": 0,
+    "misses": [
+      [
+        "K04",
+        "healthy/low"
+      ],
+      [
+        "K04",
+        "healthy/low"
+      ],
+      [
+        "K04",
+        "local_or_isp/low"
+      ]
+    ],
+    "cost_per_1000_usd": 8.13,
+    "total_cost_usd": 0.4878,
+    "fact_check": {
+      "flagged": 9,
+      "changed": 1,
+      "fixed": [],
+      "broke": [],
+      "flagged_ids": [
+        "K04",
+        "K05",
+        "K19"
+      ]
+    }
   }
 }

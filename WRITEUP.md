@@ -4,7 +4,9 @@
 
 **Result:** on 50 home-internet cases, the rules were **confidently wrong 7 times more often** than Claude Sonnet working alone (14% vs 2%). That flips the assumption, but only for a capable model: the small model (Haiku) alone was less accurate than the rules.
 
-Total API cost of the experiment: **$1.33**.
+**Follow-up test:** "Let the capable model decide, and use the rules only as a fact-checker." On 20 new held-out cases, the fact-checker **changed no outcome**. Sonnet had already reasoned its way to every fact the checker knows. Across all 210 Setup C diagnoses, the checker fixed one wrong answer and broke none.
+
+Total API cost of the experiment: **$1.83**.
 
 ## The problem
 
@@ -61,6 +63,37 @@ Checks on the headline:
 - **Where Sonnet and the rules disagree** (24 of 150): Sonnet was right 14 times, the rules 7 times.
 - **Sonnet gave a follow-up test on 100% of ambiguous cases.** The rules did so on 57%.
 
+## Follow-up: Claude decides, rules fact-check (Setup C)
+
+**Setup C:** Sonnet answers first. Then plain code (`src/factcheck.py`) checks the answer against five hard facts:
+
+- whether the network that was tested matches the provider the user named
+- whether every site redirected to a sign-in page
+- whether nothing was reachable at all
+- whether Radar reports an outage
+- what a retest showed
+
+Old thresholds such as "jitter over 20 ms" are left out on purpose, because they were the rules' weak spot. Sonnet gets a second call only when a fact contradicts its verdict, and it is allowed to keep its answer.
+
+**The test needed new data.** The 50 original cases were seen while the fact-checker was being designed, so I wrote 20 new cases (K01-K20, 6 ambiguous) and committed them before the checker existed. Mihir reviewed them before any run. One change came out of that review, also before any run: K07 is "the user hasn't signed in to the coffee-shop Wi-Fi". No label says "sign in", so an answer whose fix tells the user to sign in counts as right. The same rule was applied to the hotel case, O05.
+
+| Cases | Setup | Right | Confidently wrong | Same answer on all 3 runs | Cost per 1,000 |
+|---|---|---|---|---|---|
+| 20 held-out | Rules decide | 80.0% (16/20) | 2 (10%) | 20/20 | $0 |
+| 20 held-out | Sonnet alone (A) | 95.0% (57/60) | 0 | 18/20 | $6.74 |
+| 20 held-out | Sonnet + fact-check (C) | 95.0% (57/60) | 0 | 17/20 | $8.13 |
+| Original 50 | Sonnet alone (A) | 90.7% | 3 (2.0%) | 46/50 | $6.68 |
+| Original 50 | Sonnet + fact-check (C) | 91.3% | 3 (2.0%) | 46/50 | $6.74 |
+
+What the fact-checker did, flag by flag:
+
+- **Original 50: 1 flag in 150 answers (C04), and it helped.** Sonnet said "your Wi-Fi or your provider, medium confidence". The checker pointed out that Radar reports a Comcast outage and the line is degraded, and Sonnet switched to "provider problem". That is the right answer.
+- **Held-out K04: 3 flags, all correct, and none of them changed the outcome.** Sonnet's first answer already said the test ran over AT&T cellular and not the user's Xfinity home line, and that the user should retest on home Wi-Fi. The flag told Sonnet something it had already worked out.
+- **Held-out K05 and K19: 6 false flags.** Spectrum is a brand of Charter, and the checker doesn't know that. I predicted this before the run and left it in on purpose. Sonnet rejected all 6 and explained that the two names are the same company. No right answer was broken.
+- **Cost:** 21% more per diagnosis on the held-out set, because each of the 9 flags triggered a second call, and 6 of those were false alarms.
+
+**What it means.** The hypothesis didn't fail, but it didn't earn much either. With a model this capable, the fact-checker is cheap insurance that almost never pays out: it changed 1 outcome in 210. On this data, the claim that rules make a model safer doesn't hold up, because the model already does the checking. It might matter with a weaker model (Haiku wasn't tested with the checker) or with facts the model can't see in its input. The one case Sonnet still gets "wrong" (K04, 3 of 3 runs) is a disagreement about the label: Sonnet calls the measured line "healthy, low confidence" and gives the right fix, "turn off cellular and retest on home Wi-Fi". The answer key wasn't changed after the run.
+
 ## How each setup fails
 
 - **Rules:** they can't read the complaint. "It drops every few hours" plus a healthy snapshot gets "healthy, high confidence" (A09, A10, U03). They also miss patterns their author didn't write a rule for: a hotel login page (O05), two services failing together (U02), and the laptop-specific case (M02), where they say "bufferbloat", which would send the person to fix the router.
@@ -72,7 +105,7 @@ Checks on the headline:
 Not tested here; this is the design the results point to:
 
 1. **Use a capable model to decide, not a small one.** At $6.68 per 1,000 diagnoses, the cost is small next to one support call.
-2. **Keep rules as a fact-checker, not the decider.** Hard facts include a Radar outage, the provider differing from what the user expects, every site failing, and a retest result. When the model and a hard fact disagree, lower the confidence and ask for the follow-up test.
+2. **If you keep rules, use them as a fact-checker and not as the decider.** Setup C tested this. It was harmless: it survived 6 false alarms and fixed 1 wrong answer. But it added almost no accuracy on top of Sonnet. It's worth keeping as an audit trail and as a guard for weaker models, so don't sell it as the reason the system is accurate.
 3. **Always show which network was tested.** One of the real tests silently measured cellular instead of home Wi-Fi.
 4. **Grade the explanations too.** This eval graded only the verdict and confidence.
 
@@ -81,7 +114,9 @@ Not tested here; this is the design the results point to:
 - 50 cases, mostly synthetic and written by one author. The two real cases come from one home.
 - 3 runs per model, which is enough to see stability but not to separate small differences.
 - Radar is simulated as a single yes/no flag. The live version would query Cloudflare Radar.
-- Explanation quality (Setup B's actual job) was not scored.
+- Explanation quality (Setup B's actual job) was not scored. The fixes were only checked for the sign-in cases.
+- Setup C was tested only with Sonnet. The held-out set is 20 cases, so one case moves the score by 5 points.
+- The fact-checker doesn't know brand aliases (Spectrum is Charter). In a real product that needs a lookup table.
 - Results are for Sonnet 5.5 and Haiku 5.5 with this prompt. Other models or prompts may differ.
 
 ## Reproduce

@@ -5,6 +5,7 @@
 | Setup A - sonnet | 150 | 90.7% | 3 (2.0%) | 90.5% | 100.0% | 46/50 | $6.68 |
 | Setup B - haiku | 50 | 80.0% | 7 (14.0%) | 57.1% | 57.1% | 50/50 | $0.24 |
 | Setup B - sonnet | 50 | 80.0% | 7 (14.0%) | 57.1% | 57.1% | 50/50 | $4.82 |
+| Setup C - sonnet | 150 | 91.3% | 3 (2.0%) | 90.5% | 100.0% | 46/50 | $6.74 |
 
 Misses:
 - Rules only (no model): A08 (healthy/high), A09 (healthy/high), A10 (healthy/high), M02 (bufferbloat/high), O01 (dns/medium), O04 (bufferbloat/high), O05 (local_or_isp/medium), U02 (healthy/high), U03 (healthy/high), U04 (local_or_isp/medium)
@@ -12,3 +13,7 @@ Misses:
 - Setup A - sonnet: I03 (local_or_isp/medium), A08 (healthy/low), O01 (healthy/high), O04 (bufferbloat/medium), U04 (healthy/medium), I03 (local_or_isp/medium), O01 (healthy/high), O04 (bufferbloat/medium), U04 (healthy/medium), I03 (local_or_isp/medium), C04 (local_or_isp/medium), O01 (healthy/high), O04 (bufferbloat/medium), U04 (healthy/medium)
 - Setup B - haiku: A08 (healthy/high), A09 (healthy/high), A10 (healthy/high), M02 (bufferbloat/high), O01 (dns/medium), O04 (bufferbloat/high), O05 (local_or_isp/medium), U02 (healthy/high), U03 (healthy/high), U04 (local_or_isp/medium)
 - Setup B - sonnet: A08 (healthy/high), A09 (healthy/high), A10 (healthy/high), M02 (bufferbloat/high), O01 (dns/medium), O04 (bufferbloat/high), O05 (local_or_isp/medium), U02 (healthy/high), U03 (healthy/high), U04 (local_or_isp/medium)
+- Setup C - sonnet: I03 (local_or_isp/medium), A08 (healthy/low), O01 (healthy/high), O04 (bufferbloat/medium), U04 (healthy/medium), I03 (local_or_isp/medium), O01 (healthy/high), O04 (bufferbloat/medium), U04 (healthy/medium), I03 (local_or_isp/medium), O01 (healthy/high), O04 (bufferbloat/medium), U04 (healthy/medium)
+
+Fact-check:
+- Setup C - sonnet: flagged 1, changed 1, fixed ['C04'], broke []
