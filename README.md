@@ -17,7 +17,7 @@ See [WRITEUP.md](WRITEUP.md) for results.
 ```bash
 pip install -r requirements.txt
 python data/build_scenarios.py          # regenerate data/scenarios.json
-python -m pytest -q                     # rule tests, no API calls
+python -m pytest -q                     # rule and fact-check tests, no API calls
 python src/run_eval.py --dry-run        # show prompts and rule verdicts, no API calls
 # put ANTHROPIC_API_KEY=... in a .env file here (git-ignored); run_eval.py reads it
 python src/run_eval.py --setup both --model sonnet --runs 3
@@ -32,3 +32,11 @@ The full run is 400 calls (50 scenarios: Setup A x3 and Setup B x1, on Sonnet an
 1. Scenarios and ground truth committed first.
 2. Rules written and frozen next, without changing the scenarios.
 3. Only then any model call.
+
+## Setup C: Claude decides, rules fact-check
+
+```bash
+python src/run_eval.py --setup C --model sonnet --runs 3 --reuse-a        # original 50, reuses saved Setup A answers
+python src/run_eval.py --data heldout --setup C --model sonnet --runs 3   # 20 new held-out cases
+python src/grade.py && python src/grade.py --data heldout
+```

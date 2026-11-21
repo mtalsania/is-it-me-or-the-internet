@@ -78,8 +78,18 @@ SCHEMA_B = {
 
 
 def user_a(scenario):
-    return (f"The person says: \"{scenario['complaint']}\"\n\nMeasurements:\n"
+    who = ""
+    if scenario.get("user_provider"):  # held-out cases only; original 50 prompts are unchanged
+        who = f"They say their internet provider is: {scenario['user_provider']}\n"
+    return (f"The person says: \"{scenario['complaint']}\"\n{who}\nMeasurements:\n"
             + json.dumps(scenario["measurements"], indent=2))
+
+
+def revise_c(flags):
+    facts = "\n".join(f"- {f}" for f in flags)
+    return ("An automatic fact check of your answer found:\n" + facts + "\n\n"
+            "Re-examine your diagnosis with this in mind. If your answer still holds, keep it; "
+            "if not, revise it. Reply in the same format.")
 
 
 def user_b(scenario, rule_out):

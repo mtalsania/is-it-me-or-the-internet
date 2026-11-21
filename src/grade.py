@@ -63,8 +63,35 @@ def score(rows, truth):
     }
 
 
+def row_from(r, setup, which="output"):
+    o = r.get(which) or {}
+    if setup == "B":  # verdict and confidence come from the rules; the model only wrote text
+        return {"id": r["id"], "verdict": r["rule"]["verdict"] if r["output"] else None,
+                "confidence": r["rule"]["confidence"], "follow_up_test": o.get("follow_up_test")}
+    return {"id": r["id"], "verdict": o.get("verdict"), "confidence": o.get("confidence"),
+            "follow_up_test": o.get("follow_up_test")}
+
+
+def factcheck_stats(rows_c, truth):
+    """How often the fact-checker fired, and whether the revision fixed or broke an answer."""
+    def right(i, o):
+        return o and o["verdict"] in truth[i]["accept"] and o["confidence"] in truth[i]["confidence"]
+    flagged = [r for r in rows_c if r["flags"]]
+    changed = [r for r in flagged if (r["first"]["verdict"], r["first"]["confidence"])
+               != (r["output"]["verdict"], r["output"]["confidence"])]
+    fixed = [r["id"] for r in flagged if not right(r["id"], r["first"]) and right(r["id"], r["output"])]
+    broke = [r["id"] for r in flagged if right(r["id"], r["first"]) and not right(r["id"], r["output"])]
+    return {"flagged": len(flagged), "changed": len(changed), "fixed": fixed, "broke": broke,
+            "flagged_ids": sorted({r["id"] for r in flagged})}
+
+
 def main():
-    scenarios = json.loads((ROOT / "data" / "scenarios.json").read_text())
+    import argparse
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--data", choices=["scenarios", "heldout"], default="scenarios")
+    data = ap.parse_args().data
+    raw = RAW if data == "scenarios" else RAW / data
+    scenarios = json.loads((ROOT / "data" / f"{data}.json").read_text())
     truth = {s["id"]: s["truth"] for s in scenarios}
     configs = {}
 
@@ -76,21 +103,26 @@ def main():
                           "follow_up_test": d["follow_up_test"]})
     configs["Rules only (no model)"] = (score(rule_rows, truth), None)
 
-    for f in sorted(RAW.glob("*.jsonl")) if RAW.exists() else []:
+    fc = {}
+    files = sorted(raw.glob("*.jsonl")) if raw.exists() else []
+    have_a = {f.stem.split("_")[1] for f in files if f.stem.startswith("A_")}
+    for f in files:
         setup, model, _ = f.stem.split("_")
+        recs = [json.loads(line) for line in f.read_text().splitlines()]
+        if setup == "C" and model not in have_a:  # held-out: Setup A = Setup C's first answer
+            configs.setdefault(f"Setup A - {model}", ([], []))
+            for r in recs:
+                configs[f"Setup A - {model}"][0].append(row_from(r, "A", "first"))
+                configs[f"Setup A - {model}"][1].append(r["first_cost_usd"])
         key = f"Setup {setup} - {model}"
         configs.setdefault(key, ([], []))
         rows, costs = configs[key]
-        for line in f.read_text().splitlines():
-            r = json.loads(line)
-            o = r["output"] or {}
-            if setup == "A":
-                verdict, conf = o.get("verdict"), o.get("confidence")
-            else:  # verdict and confidence come from the rules; the model only wrote text
-                verdict, conf = r["rule"]["verdict"], r["rule"]["confidence"]
-            rows.append({"id": r["id"], "verdict": verdict if r["output"] else None,
-                         "confidence": conf, "follow_up_test": o.get("follow_up_test")})
-            costs.append(r["cost_usd"])
+        for r in recs:
+            rows.append(row_from(r, setup))
+            # Setup C's cost per diagnosis includes the decide step even when it was reused
+            costs.append(r.get("first_cost_usd", 0) + r.get("revision_cost_usd", 0) if setup == "C" else r["cost_usd"])
+        if setup == "C":
+            fc.setdefault(model, []).extend(recs)
 
     summary = {}
     for key, val in configs.items():
@@ -103,8 +135,11 @@ def main():
         s["total_cost_usd"] = round(sum(costs), 4)
         summary[key] = s
 
+    for model, recs in fc.items():
+        summary[f"Setup C - {model}"]["fact_check"] = factcheck_stats(recs, truth)
     (ROOT / "results").mkdir(exist_ok=True)
-    (ROOT / "results" / "summary.json").write_text(json.dumps(summary, indent=2) + "\n")
+    suffix = "" if data == "scenarios" else f"_{data}"
+    (ROOT / "results" / f"summary{suffix}.json").write_text(json.dumps(summary, indent=2) + "\n")
     head = ("| Setup | Diagnoses | Right | Confidently wrong | Ambiguous cases right | "
             "Follow-up on ambiguous | Stable | Cost per 1,000 |")
     lines = [head, "|" + "---|" * 8]
@@ -116,9 +151,15 @@ def main():
     table = "\n".join(lines)
     miss_txt = "\n".join(f"- {k}: " + ", ".join(f"{i} ({w})" for i, w in s["misses"]) or "none"
                          for k, s in summary.items())
-    (ROOT / "results" / "summary.md").write_text(table + "\n\nMisses:\n" + miss_txt + "\n")
+    fc_txt = "\n".join(f"- Setup C - {m}: flagged {v['fact_check']['flagged']}, changed {v['fact_check']['changed']}, "
+                        f"fixed {v['fact_check']['fixed']}, broke {v['fact_check']['broke']}"
+                        for m, v in ((k.split(' - ')[1], s) for k, s in summary.items() if 'fact_check' in s))
+    (ROOT / "results" / f"summary{suffix}.md").write_text(
+        table + "\n\nMisses:\n" + miss_txt + ("\n\nFact-check:\n" + fc_txt if fc_txt else "") + "\n")
     print(table)
     print("\nMisses:\n" + miss_txt)
+    if fc_txt:
+        print("\nFact-check:\n" + fc_txt)
 
 
 if __name__ == "__main__":

@@ -1,0 +1,32 @@
+{
+  "Rules only (no model)": {
+    "diagnoses": 20,
+    "right_overall_pct": 80.0,
+    "right_verdict_pct": 90.0,
+    "confidently_wrong": 2,
+    "confidently_wrong_pct": 10.0,
+    "ambiguous_right_pct": 66.7,
+    "ambiguous_follow_up_pct": 66.7,
+    "stable_scenarios": "20/20",
+    "unparsed": 0,
+    "misses": [
+      [
+        "K01",
+        "healthy/high"
+      ],
+      [
+        "K04",
+        "bufferbloat/medium"
+      ],
+      [
+        "K07",
+        "local_or_isp/medium"
+      ],
+      [
+        "K16",
+        "healthy/high"
+      ]
+    ],
+    "cost_per_1000_usd": 0.0
+  }
+}
