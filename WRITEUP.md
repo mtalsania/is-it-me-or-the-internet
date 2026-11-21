@@ -21,6 +21,23 @@ When the internet feels slow, people can't tell whether the cause is their Wi-Fi
 
 Order of work, visible in the git history: answers committed first, then rules, then model runs.
 
+## What "healthy" looks like
+
+These are the reference numbers behind every case. The healthy baseline is a typical US cable line. The "bad" lines are the thresholds the rules use, taken from common guidance and never tuned to the cases.
+
+| Measure | What it means | Healthy baseline | Starts to hurt | Clearly bad |
+|---|---|---|---|---|
+| Download speed | How fast things arrive | 305 Mbps | under 100 for a busy home | under 25 Mbps (the FCC broadband floor) |
+| Upload speed | How fast you send (calls, backups) | 21 Mbps | under 10 for video calls | under 3 Mbps |
+| Idle ping | Round-trip time when nothing else is running | 14 ms | 40+ ms | 80+ ms |
+| Jitter | How much the ping wobbles | 2 ms | 10+ ms | 20+ ms (calls and games stutter) |
+| Packet loss | Share of data that never arrives | 0% | 0.5% | 1% or more |
+| Ping under load | Ping while the line is busy downloading or uploading | 36 / 44 ms (+22 to +30 over idle) | +80 ms over idle (mild bufferbloat) | +150 ms over idle (severe bufferbloat) |
+| DNS lookup | Time to turn a site name into an address | 19 ms | 100+ ms | 300+ ms (every new site feels slow) |
+| One service vs. the rest | Ping to Netflix or Zoom compared with the Cloudflare edge | within 30 ms of the edge | — | 150+ ms slower while the others are fine |
+
+Two notes. First, speed is the least useful number: a 50 Mbps line with clean ping beats a 500 Mbps line with 300 ms of bufferbloat for calls and games. Second, some connections are normal outside these ranges. Satellite and 5G home internet always carry more ping and jitter, and that alone doesn't mean they're broken. The "starts to hurt" column is a rule of thumb for people reading the cases. The rules only use the "clearly bad" column.
+
 ## The data and its problems
 
 - **48 synthetic cases, all written by one author.** Only the first 30 had answers locked before the rules existed. The other 18 synthetic cases and the 2 real ones were added after the rules were frozen, by someone who knew where the rules were weak. That is a source of bias against the rules, so it gets its own check below.
