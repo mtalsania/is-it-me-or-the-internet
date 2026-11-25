@@ -2,7 +2,7 @@
 
 An eval of one assumption: **"Let the LLM diagnose your slow internet."**
 
-30 synthetic home-internet problems, each made only of numbers a browser can measure
+50 synthetic home-internet problems, each made only of numbers a browser can measure
 (the kind speed.cloudflare.com shows) plus a Cloudflare Radar outage flag. Each has a
 locked answer. Two setups are compared:
 
